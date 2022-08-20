@@ -154,7 +154,7 @@ function init() {
   platforms = [
     new Platform({ x: platformImage.width * 4 + 300 - 2  + platformImage.width - platformSmallTallImage.width, y:270, image: platformSmallTallImage }),
     new Platform({ x: -1, y: 470, image: platformImage }), 
-    new Platform({ x: platformImage.width - 150, y:470, image: platformImage }),
+    new Platform({ x: platformImage.width - 200, y:470, image: platformImage }),
     new Platform({ x: platformImage.width * 2 + 100, y:470, image: platformImage }),
     new Platform({ x: platformImage.width * 3 + 300, y:470, image: platformImage }),
     new Platform({ x: platformImage.width * 4 + 300 - 2, y:470, image: platformImage }),
@@ -291,7 +291,7 @@ window.addEventListener('keydown', ({ keyCode }) => {
     case 87: 
       if (event.repeat) {return}
       console.log('up');
-      player.velocity.y -= 23
+      player.velocity.y -= 21
       break
   }
 });

@@ -370,7 +370,7 @@ function init() {
     y: 470,
     image: platformImage
   }), new Platform({
-    x: platformImage.width - 150,
+    x: platformImage.width - 200,
     y: 470,
     image: platformImage
   }), new Platform({
@@ -510,7 +510,7 @@ window.addEventListener('keydown', function (_ref3) {
       }
 
       console.log('up');
-      player.velocity.y -= 23;
+      player.velocity.y -= 21;
       break;
   }
 });

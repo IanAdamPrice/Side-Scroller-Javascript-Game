@@ -86,55 +86,68 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/img/background.png":
-/*!********************************!*\
-  !*** ./src/img/background.png ***!
-  \********************************/
+/***/ "./src/img/clouds.png":
+/*!****************************!*\
+  !*** ./src/img/clouds.png ***!
+  \****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "072d51bcc9c09311d4c2a6708b05bddc.png");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "9865abf895009009502cf21ca492c764.png");
 
 /***/ }),
 
-/***/ "./src/img/hills.png":
-/*!***************************!*\
-  !*** ./src/img/hills.png ***!
-  \***************************/
+/***/ "./src/img/far-grounds.png":
+/*!*********************************!*\
+  !*** ./src/img/far-grounds.png ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "cfffe4c371f5e11d372b398a87c51dd0.png");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "ff9c7964863d9522274d9f41cbe5da77.png");
 
 /***/ }),
 
-/***/ "./src/img/platform.png":
-/*!******************************!*\
-  !*** ./src/img/platform.png ***!
-  \******************************/
+/***/ "./src/img/platform1.png":
+/*!*******************************!*\
+  !*** ./src/img/platform1.png ***!
+  \*******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "ffab39d3487de561be1a081fcfb3806d.png");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "efe1b955ade243c8f68e8acad693f8b9.png");
 
 /***/ }),
 
-/***/ "./src/img/platformSmallTall.png":
-/*!***************************************!*\
-  !*** ./src/img/platformSmallTall.png ***!
-  \***************************************/
+/***/ "./src/img/sea.png":
+/*!*************************!*\
+  !*** ./src/img/sea.png ***!
+  \*************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "0587f9be8e442eb74b2fe283bbf1a947.png");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "91e9ef28ef13c63293c4fad3fed4fc29.png");
+
+/***/ }),
+
+/***/ "./src/img/sky.png":
+/*!*************************!*\
+  !*** ./src/img/sky.png ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "dc8daf3a059a8bcb3d0da15bdb36c33e.png");
 
 /***/ }),
 
@@ -190,6 +203,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/img/tileset.png":
+/*!*****************************!*\
+  !*** ./src/img/tileset.png ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "40c09f12f37b5b0ee5e25e9037356db2.png");
+
+/***/ }),
+
 /***/ "./src/js/canvas.js":
 /*!**************************!*\
   !*** ./src/js/canvas.js ***!
@@ -199,19 +225,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _img_platform_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/platform.png */ "./src/img/platform.png");
-/* harmony import */ var _img_hills_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/hills.png */ "./src/img/hills.png");
-/* harmony import */ var _img_background_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../img/background.png */ "./src/img/background.png");
-/* harmony import */ var _img_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/platformSmallTall.png */ "./src/img/platformSmallTall.png");
+/* harmony import */ var _img_platform1_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/platform1.png */ "./src/img/platform1.png");
+/* harmony import */ var _img_tileset_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/tileset.png */ "./src/img/tileset.png");
+/* harmony import */ var _img_clouds_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../img/clouds.png */ "./src/img/clouds.png");
+/* harmony import */ var _img_sky_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/sky.png */ "./src/img/sky.png");
 /* harmony import */ var _img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/spriteRunLeft.png */ "./src/img/spriteRunLeft.png");
 /* harmony import */ var _img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/spriteRunRight.png */ "./src/img/spriteRunRight.png");
 /* harmony import */ var _img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/spriteStandLeft.png */ "./src/img/spriteStandLeft.png");
 /* harmony import */ var _img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/spriteStandRight.png */ "./src/img/spriteStandRight.png");
+/* harmony import */ var _img_sea_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/sea.png */ "./src/img/sea.png");
+/* harmony import */ var _img_far_grounds_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/far-grounds.png */ "./src/img/far-grounds.png");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
 
 
 
@@ -342,8 +372,12 @@ function createImage(imageSrc) {
   return image;
 }
 
-var platformImage = createImage(_img_platform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
-var platformSmallTallImage = createImage(_img_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var platformImage = createImage(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
+var platformImageMiddle = createImage(_img_tileset_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
+var backgroundImage = createImage(_img_sky_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var seaImage = createImage(_img_sea_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
+var cloudImage = createImage(_img_clouds_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
+var landImage = createImage(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
 var player = new Player();
 var platforms = [];
 var genericObject = [];
@@ -359,45 +393,147 @@ var keys = {
 var scrollOffset = 0;
 
 function init() {
-  platformImage = createImage(_img_platform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  platformImage = createImage(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  backgroundImage = createImage(_img_sky_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  cloudImage = createImage(_img_clouds_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  seaImage = createImage(_img_sea_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
+  platformImageMiddle = createImage(_img_tileset_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
   player = new Player();
-  platforms = [new Platform({
-    x: platformImage.width * 4 + 300 - 2 + platformImage.width - platformSmallTallImage.width,
-    y: 270,
-    image: platformSmallTallImage
+  platforms = [// new Platform({ x: platformImage.width * 4 + 300 - 2  + platformImage.width - platformSmallTallImage.width, y:270, image: platformSmallTallImage }),
+  new Platform({
+    x: -2,
+    y: 399,
+    image: platformImageMiddle
   }), new Platform({
-    x: -1,
-    y: 470,
-    image: platformImage
+    x: platformImageMiddle.width - 7,
+    y: 399,
+    image: platformImageMiddle
   }), new Platform({
-    x: platformImage.width - 200,
-    y: 470,
-    image: platformImage
-  }), new Platform({
-    x: platformImage.width * 2 + 100,
-    y: 470,
-    image: platformImage
-  }), new Platform({
-    x: platformImage.width * 3 + 300,
-    y: 470,
-    image: platformImage
-  }), new Platform({
-    x: platformImage.width * 4 + 300 - 2,
-    y: 470,
-    image: platformImage
-  }), new Platform({
-    x: platformImage.width * 5 + 700 - 2,
-    y: 470,
-    image: platformImage
-  })];
-  genericObject = [new GenericObject({
-    x: -1,
+    x: platformImageMiddle.width * 2 - 14,
+    y: 399,
+    image: platformImageMiddle
+  }) //new Platform({ x: -30, y: 399, image: platformImage }), 
+  // new Platform({ x: platformImage.width * 2 + 100, y:470, image: platformImage }),
+  // new Platform({ x: platformImage.width * 3 + 300, y:470, image: platformImage }),
+  // new Platform({ x: platformImage.width * 4 + 300 - 2, y:470, image: platformImage }),
+  // new Platform({ x: platformImage.width * 5 + 700 - 2, y:470, image: platformImage })
+  ];
+  genericObject = [//sky assets
+  new GenericObject({
+    x: 0,
     y: -1,
-    image: createImage(_img_background_png__WEBPACK_IMPORTED_MODULE_2__["default"])
+    image: backgroundImage
   }), new GenericObject({
-    x: -1,
-    y: -1,
-    image: createImage(_img_hills_png__WEBPACK_IMPORTED_MODULE_1__["default"])
+    x: backgroundImage.width,
+    y: 0,
+    image: backgroundImage
+  }), new GenericObject({
+    x: backgroundImage.width * 2,
+    y: 0,
+    image: backgroundImage
+  }), new GenericObject({
+    x: backgroundImage.width * 3,
+    y: 0,
+    image: backgroundImage
+  }), new GenericObject({
+    x: backgroundImage.width * 4,
+    y: 0,
+    image: backgroundImage
+  }), new GenericObject({
+    x: backgroundImage.width * 5,
+    y: 0,
+    image: backgroundImage
+  }), new GenericObject({
+    x: backgroundImage.width * 6,
+    y: 0,
+    image: backgroundImage
+  }), new GenericObject({
+    x: backgroundImage.width * 7,
+    y: 0,
+    image: backgroundImage
+  }), new GenericObject({
+    x: backgroundImage.width * 8,
+    y: 0,
+    image: backgroundImage
+  }), new GenericObject({
+    x: backgroundImage.width * 9,
+    y: 0,
+    image: backgroundImage
+  }), // Cloud Assets
+  new GenericObject({
+    x: 0,
+    y: 200,
+    image: cloudImage
+  }), new GenericObject({
+    x: cloudImage.width,
+    y: 200,
+    image: cloudImage
+  }), new GenericObject({
+    x: cloudImage.width * 2,
+    y: 200,
+    image: cloudImage
+  }), new GenericObject({
+    x: cloudImage.width * 3,
+    y: 200,
+    image: cloudImage
+  }), new GenericObject({
+    x: cloudImage.width * 4,
+    y: 200,
+    image: cloudImage
+  }), new GenericObject({
+    x: cloudImage.width * 5,
+    y: 200,
+    image: cloudImage
+  }), new GenericObject({
+    x: cloudImage.width * 6,
+    y: 200,
+    image: cloudImage
+  }), // Sea assets
+  new GenericObject({
+    x: 0,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width * 2,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width * 3,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width * 4,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width * 5,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width * 6,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width * 7,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width * 8,
+    y: 384,
+    image: seaImage
+  }), new GenericObject({
+    x: seaImage.width * 9,
+    y: 384,
+    image: seaImage
+  }), // foreground land
+  new GenericObject({
+    x: 650,
+    y: 435,
+    image: landImage
   })];
   scrollOffset = 0;
 } // Player movement

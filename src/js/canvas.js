@@ -1,11 +1,13 @@
-import platform from '../img/platform.png'
-import hills from '../img/hills.png'
-import background from '../img/background.png'
-import platformSmallTall from '../img/platformSmallTall.png'
+import platform from '../img/platform1.png'
+import platform2 from '../img/tileset.png'
+import clouds from '../img/clouds.png'
+import background from '../img/sky.png'
 import spriteRunLeft from '../img/spriteRunLeft.png'
 import spriteRunRight from '../img/spriteRunRight.png'
 import spriteStandLeft from '../img/spriteStandLeft.png'
 import spriteStandRight from '../img/spriteStandRight.png'
+import sea from '../img/sea.png'
+import land from '../img/far-grounds.png'
 
 
 const canvas = document.querySelector('canvas');
@@ -123,8 +125,13 @@ function createImage(imageSrc) {
   image.src = imageSrc
   return image
 }
+
 let platformImage = createImage(platform)
-let platformSmallTallImage = createImage(platformSmallTall)
+let platformImageMiddle = createImage(platform2)
+let backgroundImage = createImage(background)
+let seaImage = createImage(sea)
+let cloudImage = createImage(clouds)
+let landImage = createImage(land)
 
 let player = new Player()
 
@@ -148,31 +155,68 @@ let scrollOffset = 0
 function init() {
 
   platformImage = createImage(platform)
+  backgroundImage = createImage(background)
+  cloudImage = createImage(clouds)
+  seaImage = createImage(sea)
+  platformImageMiddle = createImage(platform2)
+
+
 
   player = new Player()
 
   platforms = [
-    new Platform({ x: platformImage.width * 4 + 300 - 2  + platformImage.width - platformSmallTallImage.width, y:270, image: platformSmallTallImage }),
-    new Platform({ x: -1, y: 470, image: platformImage }), 
-    new Platform({ x: platformImage.width - 200, y:470, image: platformImage }),
-    new Platform({ x: platformImage.width * 2 + 100, y:470, image: platformImage }),
-    new Platform({ x: platformImage.width * 3 + 300, y:470, image: platformImage }),
-    new Platform({ x: platformImage.width * 4 + 300 - 2, y:470, image: platformImage }),
-    new Platform({ x: platformImage.width * 5 + 700 - 2, y:470, image: platformImage })
+    // new Platform({ x: platformImage.width * 4 + 300 - 2  + platformImage.width - platformSmallTallImage.width, y:270, image: platformSmallTallImage }),
+    new Platform({ x: -2, y:399, image: platformImageMiddle }),
+    new Platform({ x: platformImageMiddle.width - 7, y:399, image: platformImageMiddle }),
+    new Platform({ x: platformImageMiddle.width * 2 - 14, y:399, image: platformImageMiddle }),
 
+
+    //new Platform({ x: -30, y: 399, image: platformImage }), 
+
+    // new Platform({ x: platformImage.width * 2 + 100, y:470, image: platformImage }),
+    // new Platform({ x: platformImage.width * 3 + 300, y:470, image: platformImage }),
+    // new Platform({ x: platformImage.width * 4 + 300 - 2, y:470, image: platformImage }),
+    // new Platform({ x: platformImage.width * 5 + 700 - 2, y:470, image: platformImage })
   ]
 
   genericObject = [
-    new GenericObject({ 
-      x: -1,
-      y: -1,
-      image: createImage(background)
-    }),
-    new GenericObject({ 
-      x: -1,
-      y: -1,
-      image: createImage(hills)
-    })
+    //sky assets
+    new GenericObject({ x: 0, y: -1, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width  , y: 0, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width * 2 , y: 0, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width * 3 , y: 0, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width * 4 , y: 0, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width * 5 , y: 0, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width * 6 , y: 0, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width * 7 , y: 0, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width * 8 , y: 0, image: backgroundImage }),
+    new GenericObject({ x: backgroundImage.width * 9 , y: 0, image: backgroundImage }),
+    
+    // Cloud Assets
+    new GenericObject({ x: 0, y: 200, image: cloudImage}),
+    new GenericObject({ x: cloudImage.width, y: 200, image: cloudImage}),
+    new GenericObject({ x: cloudImage.width * 2, y: 200, image: cloudImage}),
+    new GenericObject({ x: cloudImage.width * 3, y: 200, image: cloudImage}),
+    new GenericObject({ x: cloudImage.width * 4, y: 200, image: cloudImage}),
+    new GenericObject({ x: cloudImage.width * 5, y: 200, image: cloudImage}),
+    new GenericObject({ x: cloudImage.width * 6, y: 200, image: cloudImage}),
+
+
+    // Sea assets
+    new GenericObject({ x: 0, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 2, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 3, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 4, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 5, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 6, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 7, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 8, y: 384, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 9, y: 384, image: seaImage }),
+
+   // foreground land
+   new GenericObject({ x: 650, y: 435, image: landImage})
+ 
   ]
   scrollOffset = 0
 }

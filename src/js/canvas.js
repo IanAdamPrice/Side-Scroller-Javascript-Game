@@ -1,5 +1,13 @@
+// Platform import assets
 import platform from '../img/platform1.png'
 import platform2 from '../img/tileset.png'
+import platformSmall from '../img/platform2.png'
+import platformEnd from '../img/platformEnd.png'
+import floatingPlatform from '../img/floatingPlatform.png'
+import bigPlatformLeft from '../img/bigPlatformLeft.png'
+import bridgeStart from '../img/bridgeStart.png'
+import bridgeMiddle from '../img/bridgeMiddle.png'
+import bridgeEnd from '../img/bridgeEnd.png'
 import clouds from '../img/clouds.png'
 import background from '../img/sky.png'
 import spriteRunLeft from '../img/spriteRunLeft.png'
@@ -8,6 +16,7 @@ import spriteStandLeft from '../img/spriteStandLeft.png'
 import spriteStandRight from '../img/spriteStandRight.png'
 import sea from '../img/sea.png'
 import land from '../img/far-grounds.png'
+import tree from '../img/tree.png'
 
 
 const canvas = document.querySelector('canvas');
@@ -31,8 +40,8 @@ class Player {
       y: 0
     }
 
-    this.width = 66
-    this.height = 150
+    this.width = 54
+    this.height = 70
 
     this.image = createImage(spriteStandRight)
     this.frames = 0
@@ -40,19 +49,19 @@ class Player {
       stand: {
         right: createImage(spriteStandRight),
         left: createImage(spriteStandLeft),
-        cropWidth: 177,
-        width: 66
+        cropWidth: 54,
+        width: 54
       },
       run: {
         right: createImage(spriteRunRight),
         left: createImage(spriteRunLeft),
-        cropWidth: 341,
-        width: 127.875
+        cropWidth: 68,
+        width: 68
       }
     }
 
     this.currentSprite = this.sprites.stand.right
-    this.currentCropWidth = 177
+    this.currentCropWidth = 54
   }
 
   draw() {
@@ -61,7 +70,7 @@ class Player {
       this.currentCropWidth * this.frames,
       0,
       this.currentCropWidth,
-      400,
+      93,
       this.position.x, 
       this.position.y, 
       this.width, 
@@ -70,9 +79,9 @@ class Player {
 
   update() {
     this.frames++
-    if (this.frames > 59 && (this.currentSprite === this.sprites.stand.right || this.currentSprite === this.sprites.stand.left)) 
+    if (this.frames > 39 && (this.currentSprite === this.sprites.stand.right || this.currentSprite === this.sprites.stand.left)) 
       this.frames = 0
-    else if (this.frames > 29 && (this.currentSprite === this.sprites.run.right || this.currentSprite === this.sprites.run.left)) 
+    else if (this.frames > 39 && (this.currentSprite === this.sprites.run.right || this.currentSprite === this.sprites.run.left)) 
       this.frames = 0
     this.draw()
     this.position.x += this.velocity.x
@@ -128,10 +137,19 @@ function createImage(imageSrc) {
 
 let platformImage = createImage(platform)
 let platformImageMiddle = createImage(platform2)
+let platformEndImage = createImage(platformEnd)
+let platformSmallImage = createImage(platformSmall)
+let bigPlatformLeftImage = createImage(bigPlatformLeft)
+let floatingPlatformImage = createImage(floatingPlatform)
+let bridgeStartImage = createImage(bridgeStart)
+let bridgeMiddleImage = createImage(bridgeMiddle)
+let bridgeEndImage = createImage(bridgeEnd)
 let backgroundImage = createImage(background)
 let seaImage = createImage(sea)
 let cloudImage = createImage(clouds)
 let landImage = createImage(land)
+let treeImage = createImage(tree)
+
 
 let player = new Player()
 
@@ -154,21 +172,51 @@ let scrollOffset = 0
 
 function init() {
 
+  platformImageMiddle = createImage(platform2)
+  platformEndImage = createImage(platformEnd)
   platformImage = createImage(platform)
+  platformSmallImage = createImage(platformSmall)
+  floatingPlatformImage = createImage(floatingPlatform)
+  bigPlatformLeftImage = createImage(bigPlatformLeft)
+  bridgeStartImage = createImage(bridgeStart)
+  bridgeMiddleImage = createImage(bridgeMiddle)
+  bridgeEndImage = createImage(bridgeEnd)
+
+
   backgroundImage = createImage(background)
   cloudImage = createImage(clouds)
   seaImage = createImage(sea)
-  platformImageMiddle = createImage(platform2)
+
+  treeImage = createImage(tree)
 
 
 
   player = new Player()
 
   platforms = [
-    // new Platform({ x: platformImage.width * 4 + 300 - 2  + platformImage.width - platformSmallTallImage.width, y:270, image: platformSmallTallImage }),
-    new Platform({ x: -2, y:399, image: platformImageMiddle }),
-    new Platform({ x: platformImageMiddle.width - 7, y:399, image: platformImageMiddle }),
-    new Platform({ x: platformImageMiddle.width * 2 - 14, y:399, image: platformImageMiddle }),
+    // platforms
+    // new Platform({ x: platformImageMiddle.width * 3 -15, y: 323, image: platformEndImage }),
+    // new Platform({ x: -2, y: 323, image: platformImageMiddle }),
+    // new Platform({ x: platformImageMiddle.width - 7, y: 323, image: platformSmallImage }),
+    // new Platform({ x: platformImageMiddle.width * 2 - 14, y: 323, image: platformImageMiddle }),
+    // new Platform({ x: platformImageMiddle.width * 3 , y: 325, image: bridgeStartImage}),
+    // new Platform({ x: platformImageMiddle.width * 4 -15, y: 323, image: bridgeMiddleImage}),
+    // new Platform({ x: platformImageMiddle.width * 4 +49, y: 323, image: bridgeMiddleImage}),
+    // new Platform({ x: platformImageMiddle.width * 5 +10, y: 323, image: bridgeMiddleImage}),
+    // new Platform({ x: platformImageMiddle.width * 6 -24, y: 323, image: bridgeMiddleImage}),
+    // new Platform({ x: platformImageMiddle.width * 7 -55, y: 325, image: bridgeEndImage}),
+    
+    //floating Platforms 
+    new Platform({ x: 700, y: 130, image: floatingPlatformImage}),
+
+    new Platform({ x: 20, y: -6, image: treeImage})
+
+
+
+
+
+
+
 
 
     //new Platform({ x: -30, y: 399, image: platformImage }), 
@@ -180,6 +228,9 @@ function init() {
   ]
 
   genericObject = [
+    // platform fill
+    
+
     //sky assets
     new GenericObject({ x: 0, y: -1, image: backgroundImage }),
     new GenericObject({ x: backgroundImage.width  , y: 0, image: backgroundImage }),
@@ -214,8 +265,9 @@ function init() {
     new GenericObject({ x: seaImage.width * 8, y: 384, image: seaImage }),
     new GenericObject({ x: seaImage.width * 9, y: 384, image: seaImage }),
 
-   // foreground land
-   new GenericObject({ x: 650, y: 435, image: landImage})
+    // foreground land
+    new GenericObject({ x: 850, y: 435, image: landImage}),
+
  
   ]
   scrollOffset = 0
@@ -268,8 +320,8 @@ function animate() {
   // platform collision detection
   platforms.forEach((platform) => {
     if (
-      player.position.y + player.height <= platform.position.y 
-      && player.position.y + player.height+ player.velocity.y >= platform.position.y 
+      player.position.y + player.height <= platform.position.y +2
+      && player.position.y + player.height + player.velocity.y >= platform.position.y +2 
       && player.position.x + player.width >= platform.position.x 
       && player.position.x <= platform.position.x + platform.width) {
       player.velocity.y = 0

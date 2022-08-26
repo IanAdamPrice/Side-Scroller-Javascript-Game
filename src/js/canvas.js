@@ -1,10 +1,12 @@
 // Platform import assets
 
 import floatingPlatform from '../img/floatingPlatform.png'
-import floatingPlatform2 from '../img/floatingPlatform2.png'
+import floatingPlatform2 from '../img/floatingPlatform3.png'
 import bigPlatformLeft from '../img/bigPlatformLeft.png'
 import bigPlatformMiddle from '../img/bigPlatformMiddle.png'
 import bridge from '../img/bridge.png'
+import cross1 from '../img/cross1.png'
+
 import clouds from '../img/clouds.png'
 import background from '../img/sky.png'
 import pillar from '../img/pillar.png'
@@ -13,6 +15,8 @@ import spriteRunLeft from '../img/spriteRunLeft.png'
 import spriteRunRight from '../img/spriteRunRight.png'
 import spriteStandLeft from '../img/spriteStandLeft.png'
 import spriteStandRight from '../img/spriteStandRight.png'
+import enemyWalkRight from '../img/enemyWalkRight.png'
+import enemyWalkLeft from '../img/enemyWalkLeft.png'
 import sea from '../img/sea.png'
 import land from '../img/far-grounds.png'
 
@@ -32,8 +36,8 @@ class Player {
   constructor() {
     this.speed = 7
     this.position = {
-      x: 100,
-      y: 100
+      x: 140,
+      y: 283
     }
     this.velocity = {
       x: 0,
@@ -129,10 +133,67 @@ class GenericObject {
   }
 }
 
+class Enemy {
+  constructor({position, velocity}) {
+    this.position ={
+      x: position.x,
+      y: position.y
+    }
+
+    this.velocity = {
+      x: velocity.x,
+      y: velocity.y
+    }
+
+    this.width = 50
+    this.height = 74
+
+    this.image = createImage(enemyWalkLeft)
+    this.frames = 0
+  }
+
+  draw() {
+    //c. fillStyle = 'red'
+    //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    c.drawImage(
+      this.image, 
+      50 * this.frames,
+      0,
+      50,
+      74,
+      this.position.x, 
+      this.position.y, 
+      this.width, 
+      this.height)
+  }
+
+  update() {
+    this.frames++
+    if (this.frames >= 7) this.frames = 0
+    this.draw()
+
+    this.position.x += this.velocity.x
+    this.position.y += this.velocity.y
+
+    if (this.position.y + this.height + this.velocity.y <= canvas.height)
+      this.velocity.y += gravity
+  }
+}
+
 function createImage(imageSrc) {
   const image = new Image()
   image.src = imageSrc
   return image
+}
+
+function createImageAsync(imageSrc) {
+  return new Promise ((resolve) => {
+    const image = new Image()
+    image.onload = () => {
+      resolve(image)
+    }
+    image.src = imageSrc
+  })
 }
 
 
@@ -141,6 +202,7 @@ let floatingPlatformImage = createImage(floatingPlatform)
 let floatingPlatform2Image = createImage(floatingPlatform2)
 let bigplatformMiddleImage = createImage(bigPlatformMiddle)
 let bridgeImage = createImage(bridge)
+let crossImage1 = createImage(cross1)
 let backgroundImage = createImage(background)
 let seaImage = createImage(sea)
 let cloudImage = createImage(clouds)
@@ -150,14 +212,12 @@ let pillarImage = createImage(pillar)
 
 
 let player = new Player()
-
 let platforms = []
-
 let genericObject = []
+let enemys = []
 
 let lastKey
-
-let keys = {
+const keys = {
   right: {
     pressed: false
   },
@@ -168,37 +228,80 @@ let keys = {
 
 let scrollOffset = 0
 
-function init() {
+function isOnTopOfPlatform({object, platform }) {
+  return (
+    object.position.y + object.height <= platform.position.y +40
+    && object.position.y + object.height + object.velocity.y >= platform.position.y +40 
+    && object.position.x + object.width >= platform.position.x 
+    && object.position.x  <= platform.position.x + platform.width
+  )
+}
 
+function collisionTop({object1, object2 }) {
+  return (
+    object1.position.y + object1.height <= object2.position.y +40
+    && object1.position.y + object1.height + object1.velocity.y >= object2.position.y +40 
+    && object1.position.x + object1.width >= object2.position.x +30
+    && object1.position.x +30 <= object2.position.x + object2.width
+  )
+}
 
-  floatingPlatformImage = createImage(floatingPlatform)
-  floatingPlatform2Image = createImage(floatingPlatform2)
+async function init() {
 
-  bigPlatformLeftImage = createImage(bigPlatformLeft)
-  bigplatformMiddleImage = createImage(bigPlatformMiddle)
-  bridgeImage = createImage(bridge)
+  floatingPlatformImage = await createImageAsync(floatingPlatform)
+  floatingPlatform2Image = await createImageAsync(floatingPlatform2)
+  bigPlatformLeftImage = await createImageAsync(bigPlatformLeft)
+  bigplatformMiddleImage = await createImageAsync(bigPlatformMiddle)
+  bridgeImage = await createImageAsync(bridge)
+  crossImage1 = await createImageAsync(cross1)
 
+  backgroundImage = await createImageAsync(background)
+  cloudImage = await createImageAsync(clouds)
+  seaImage = await createImageAsync(sea)
+  landImage = await createImageAsync(land)
 
-  backgroundImage = createImage(background)
-  cloudImage = createImage(clouds)
-  seaImage = createImage(sea)
-  landImage = createImage(land)
-
-
-  treeImage = createImage(tree)
-  pillarImage = createImage(pillar)
-
-
+  treeImage = await createImageAsync(tree)
+  pillarImage = await createImageAsync(pillar)
 
   player = new Player()
+  
+  enemys = [
+    new Enemy({
+      position: {
+        x: 800, 
+        y: 100}, 
+      velocity: { 
+        x: -.3, 
+        y: 0, } 
+    })
+  ]
 
+  // all platforms
   platforms = [
     // platforms
-    new Platform({ x: 815, y: 0, image: pillarImage}),
+    new Platform({ 
+      x: 815, 
+      y: 0, 
+      image: pillarImage
+    }),
 
-    new Platform({x: 0, y: 315, image: bigPlatformLeftImage}),
-    new Platform({x: bigPlatformLeftImage.width + bridgeImage.width - 205, y: 315, image: bigplatformMiddleImage}),
-    new Platform({x: bigPlatformLeftImage.width -40, y: 315, image: bridgeImage}),
+    new Platform({
+      x: 0, 
+      y: 315, 
+      image: bigPlatformLeftImage
+    }),
+
+    new Platform({
+      x: bigPlatformLeftImage.width + bridgeImage.width - 205, 
+      y: 315, 
+      image: bigplatformMiddleImage
+    }),
+
+    new Platform({
+      x: bigPlatformLeftImage.width -40, 
+      y: 315, 
+      image: bridgeImage
+    }),
     
     
     //floating Platforms 
@@ -210,13 +313,13 @@ function init() {
 
 
     new Platform({ x: 20, y: 35, image: treeImage}),
+    new Platform({x: 200, y: 315, image: crossImage1}),
+
 
   ]
 
+  // all background object (affected by scroll offset)
   genericObject = [
-    // platform fill
-    
-
     //sky assets
     new GenericObject({ x: 0, y: -1, image: backgroundImage }),
     new GenericObject({ x: backgroundImage.width  , y: 0, image: backgroundImage }),
@@ -268,9 +371,28 @@ function animate() {
   genericObject.forEach(genericObject => {
     genericObject.draw()
   })
+
   platforms.forEach((platform) => {
     platform.draw()
   })
+
+  enemys.forEach((enemy, index) => {
+    enemy.update()
+
+    if (collisionTop({
+      object1: player,
+      object2: enemy
+      })
+    ) {
+      player.velocity.y -= 40
+      setTimeout(() => {  
+        enemys.splice(index, 1)
+      }, 0)
+    }
+  })
+
+
+
   player.update()
 
 
@@ -292,6 +414,9 @@ function animate() {
     genericObject.forEach(genericObject => {
       genericObject.position.x -= player.speed *.50
     })
+    enemys.forEach((enemy) => {
+      enemy.position.x -= player.speed
+    })
   } else if (keys.left.pressed && scrollOffset > 0) {
     scrollOffset -= player.speed
       platforms.forEach((platform) => {
@@ -300,6 +425,9 @@ function animate() {
       genericObject.forEach(genericObject => {
         genericObject.position.x += player.speed *.50
       })
+      enemys.forEach((enemy) => {
+        enemy.position.x += player.speed
+      })
     }
   }
 
@@ -307,12 +435,22 @@ function animate() {
   // platform collision detection
   platforms.forEach((platform) => {
     if (
-      player.position.y + player.height <= platform.position.y +40
-      && player.position.y + player.height + player.velocity.y >= platform.position.y +40 
-      && player.position.x + player.width >= platform.position.x 
-      && player.position.x <= platform.position.x + platform.width) {
+      isOnTopOfPlatform({
+        object: player,
+        platform
+    })
+    ) {
       player.velocity.y = 0
     }
+
+    enemys.forEach(enemy => {
+      if ( isOnTopOfPlatform({
+        object: enemy,
+        platform
+        })
+      )
+        enemy.velocity.y = 0
+    })
   })
 
   if (keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.run.right) {
@@ -372,7 +510,6 @@ window.addEventListener('keydown', ({ keyCode }) => {
   
   // Action for "W" key
     case 87: 
-      if (event.repeat) {return}
       console.log('up');
       player.velocity.y -= 19
       break

@@ -86,6 +86,511 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/createClass.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
+
+module.exports = _createClass, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/regeneratorRuntime.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ./typeof.js */ "./node_modules/@babel/runtime/helpers/typeof.js")["default"];
+
+function _regeneratorRuntime() {
+  "use strict";
+  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+  module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
+    return exports;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  var exports = {},
+      Op = Object.prototype,
+      hasOwn = Op.hasOwnProperty,
+      $Symbol = "function" == typeof Symbol ? Symbol : {},
+      iteratorSymbol = $Symbol.iterator || "@@iterator",
+      asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
+      toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    return Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }), obj[key];
+  }
+
+  try {
+    define({}, "");
+  } catch (err) {
+    define = function define(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
+        generator = Object.create(protoGenerator.prototype),
+        context = new Context(tryLocsList || []);
+    return generator._invoke = function (innerFn, self, context) {
+      var state = "suspendedStart";
+      return function (method, arg) {
+        if ("executing" === state) throw new Error("Generator is already running");
+
+        if ("completed" === state) {
+          if ("throw" === method) throw arg;
+          return doneResult();
+        }
+
+        for (context.method = method, context.arg = arg;;) {
+          var delegate = context.delegate;
+
+          if (delegate) {
+            var delegateResult = maybeInvokeDelegate(delegate, context);
+
+            if (delegateResult) {
+              if (delegateResult === ContinueSentinel) continue;
+              return delegateResult;
+            }
+          }
+
+          if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
+            if ("suspendedStart" === state) throw state = "completed", context.arg;
+            context.dispatchException(context.arg);
+          } else "return" === context.method && context.abrupt("return", context.arg);
+          state = "executing";
+          var record = tryCatch(innerFn, self, context);
+
+          if ("normal" === record.type) {
+            if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
+            return {
+              value: record.arg,
+              done: context.done
+            };
+          }
+
+          "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
+        }
+      };
+    }(innerFn, self, context), generator;
+  }
+
+  function tryCatch(fn, obj, arg) {
+    try {
+      return {
+        type: "normal",
+        arg: fn.call(obj, arg)
+      };
+    } catch (err) {
+      return {
+        type: "throw",
+        arg: err
+      };
+    }
+  }
+
+  exports.wrap = wrap;
+  var ContinueSentinel = {};
+
+  function Generator() {}
+
+  function GeneratorFunction() {}
+
+  function GeneratorFunctionPrototype() {}
+
+  var IteratorPrototype = {};
+  define(IteratorPrototype, iteratorSymbol, function () {
+    return this;
+  });
+  var getProto = Object.getPrototypeOf,
+      NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
+  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function (method) {
+      define(prototype, method, function (arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+
+      if ("throw" !== record.type) {
+        var result = record.arg,
+            value = result.value;
+        return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
+          invoke("next", value, resolve, reject);
+        }, function (err) {
+          invoke("throw", err, resolve, reject);
+        }) : PromiseImpl.resolve(value).then(function (unwrapped) {
+          result.value = unwrapped, resolve(result);
+        }, function (error) {
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+
+      reject(record.arg);
+    }
+
+    var previousPromise;
+
+    this._invoke = function (method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function (resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+    };
+  }
+
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+
+    if (undefined === method) {
+      if (context.delegate = null, "throw" === context.method) {
+        if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel;
+        context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+    if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
+    var info = record.arg;
+    return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
+  }
+
+  function pushTryEntry(locs) {
+    var entry = {
+      tryLoc: locs[0]
+    };
+    1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal", delete record.arg, entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    this.tryEntries = [{
+      tryLoc: "root"
+    }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
+  }
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) return iteratorMethod.call(iterable);
+      if ("function" == typeof iterable.next) return iterable;
+
+      if (!isNaN(iterable.length)) {
+        var i = -1,
+            next = function next() {
+          for (; ++i < iterable.length;) {
+            if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
+          }
+
+          return next.value = undefined, next.done = !0, next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    return {
+      next: doneResult
+    };
+  }
+
+  function doneResult() {
+    return {
+      value: undefined,
+      done: !0
+    };
+  }
+
+  return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
+    var ctor = "function" == typeof genFun && genFun.constructor;
+    return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
+  }, exports.mark = function (genFun) {
+    return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun;
+  }, exports.awrap = function (arg) {
+    return {
+      __await: arg
+    };
+  }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+    return this;
+  }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    void 0 === PromiseImpl && (PromiseImpl = Promise);
+    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
+    return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) {
+      return result.done ? result.value : iter.next();
+    });
+  }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () {
+    return this;
+  }), define(Gp, "toString", function () {
+    return "[object Generator]";
+  }), exports.keys = function (object) {
+    var keys = [];
+
+    for (var key in object) {
+      keys.push(key);
+    }
+
+    return keys.reverse(), function next() {
+      for (; keys.length;) {
+        var key = keys.pop();
+        if (key in object) return next.value = key, next.done = !1, next;
+      }
+
+      return next.done = !0, next;
+    };
+  }, exports.values = values, Context.prototype = {
+    constructor: Context,
+    reset: function reset(skipTempReset) {
+      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) {
+        "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
+      }
+    },
+    stop: function stop() {
+      this.done = !0;
+      var rootRecord = this.tryEntries[0].completion;
+      if ("throw" === rootRecord.type) throw rootRecord.arg;
+      return this.rval;
+    },
+    dispatchException: function dispatchException(exception) {
+      if (this.done) throw exception;
+      var context = this;
+
+      function handle(loc, caught) {
+        return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i],
+            record = entry.completion;
+        if ("root" === entry.tryLoc) return handle("end");
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc"),
+              hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+          } else {
+            if (!hasFinally) throw new Error("try statement without catch or finally");
+            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+          }
+        }
+      }
+    },
+    abrupt: function abrupt(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
+      var record = finallyEntry ? finallyEntry.completion : {};
+      return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
+    },
+    complete: function complete(record, afterLoc) {
+      if ("throw" === record.type) throw record.arg;
+      return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel;
+    },
+    finish: function finish(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel;
+      }
+    },
+    "catch": function _catch(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+
+          if ("throw" === record.type) {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+
+          return thrown;
+        }
+      }
+
+      throw new Error("illegal catch attempt");
+    },
+    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
+      return this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      }, "next" === this.method && (this.arg = undefined), ContinueSentinel;
+    }
+  }, exports;
+}
+
+module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
+}
+
+module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// TODO(Babel 8): Remove this file.
+
+var runtime = __webpack_require__(/*! ../helpers/regeneratorRuntime */ "./node_modules/@babel/runtime/helpers/regeneratorRuntime.js")();
+module.exports = runtime;
+
+// Copied from https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js#L736=
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  if (typeof globalThis === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
+}
+
+
+/***/ }),
+
 /***/ "./src/img/bigPlatformLeft.png":
 /*!*************************************!*\
   !*** ./src/img/bigPlatformLeft.png ***!
@@ -138,6 +643,45 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/img/cross1.png":
+/*!****************************!*\
+  !*** ./src/img/cross1.png ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "c93a7501045a05f44e070017c17ca354.png");
+
+/***/ }),
+
+/***/ "./src/img/enemyWalkLeft.png":
+/*!***********************************!*\
+  !*** ./src/img/enemyWalkLeft.png ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "0bf048f981389de8916c95536ba8304b.png");
+
+/***/ }),
+
+/***/ "./src/img/enemyWalkRight.png":
+/*!************************************!*\
+  !*** ./src/img/enemyWalkRight.png ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "59fab4e91c16ba8769a1cb09562b6018.png");
+
+/***/ }),
+
 /***/ "./src/img/far-grounds.png":
 /*!*********************************!*\
   !*** ./src/img/far-grounds.png ***!
@@ -164,16 +708,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/img/floatingPlatform2.png":
+/***/ "./src/img/floatingPlatform3.png":
 /*!***************************************!*\
-  !*** ./src/img/floatingPlatform2.png ***!
+  !*** ./src/img/floatingPlatform3.png ***!
   \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "210c182ec151c7117003cb9b8afec58a.png");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "ab9181a524491161c13401d316f1f9ea.png");
 
 /***/ }),
 
@@ -290,28 +834,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/floatingPlatform.png */ "./src/img/floatingPlatform.png");
-/* harmony import */ var _img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/floatingPlatform2.png */ "./src/img/floatingPlatform2.png");
-/* harmony import */ var _img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../img/bigPlatformLeft.png */ "./src/img/bigPlatformLeft.png");
-/* harmony import */ var _img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/bigPlatformMiddle.png */ "./src/img/bigPlatformMiddle.png");
-/* harmony import */ var _img_bridge_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/bridge.png */ "./src/img/bridge.png");
-/* harmony import */ var _img_clouds_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/clouds.png */ "./src/img/clouds.png");
-/* harmony import */ var _img_sky_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/sky.png */ "./src/img/sky.png");
-/* harmony import */ var _img_pillar_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/pillar.png */ "./src/img/pillar.png");
-/* harmony import */ var _img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/spriteRunLeft.png */ "./src/img/spriteRunLeft.png");
-/* harmony import */ var _img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/spriteRunRight.png */ "./src/img/spriteRunRight.png");
-/* harmony import */ var _img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/spriteStandLeft.png */ "./src/img/spriteStandLeft.png");
-/* harmony import */ var _img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/spriteStandRight.png */ "./src/img/spriteStandRight.png");
-/* harmony import */ var _img_sea_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../img/sea.png */ "./src/img/sea.png");
-/* harmony import */ var _img_far_grounds_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/far-grounds.png */ "./src/img/far-grounds.png");
-/* harmony import */ var _img_tree_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/tree.png */ "./src/img/tree.png");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/floatingPlatform.png */ "./src/img/floatingPlatform.png");
+/* harmony import */ var _img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/floatingPlatform3.png */ "./src/img/floatingPlatform3.png");
+/* harmony import */ var _img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/bigPlatformLeft.png */ "./src/img/bigPlatformLeft.png");
+/* harmony import */ var _img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/bigPlatformMiddle.png */ "./src/img/bigPlatformMiddle.png");
+/* harmony import */ var _img_bridge_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/bridge.png */ "./src/img/bridge.png");
+/* harmony import */ var _img_cross1_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/cross1.png */ "./src/img/cross1.png");
+/* harmony import */ var _img_clouds_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/clouds.png */ "./src/img/clouds.png");
+/* harmony import */ var _img_sky_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/sky.png */ "./src/img/sky.png");
+/* harmony import */ var _img_pillar_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../img/pillar.png */ "./src/img/pillar.png");
+/* harmony import */ var _img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/spriteRunLeft.png */ "./src/img/spriteRunLeft.png");
+/* harmony import */ var _img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/spriteRunRight.png */ "./src/img/spriteRunRight.png");
+/* harmony import */ var _img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/spriteStandLeft.png */ "./src/img/spriteStandLeft.png");
+/* harmony import */ var _img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/spriteStandRight.png */ "./src/img/spriteStandRight.png");
+/* harmony import */ var _img_enemyWalkRight_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../img/enemyWalkRight.png */ "./src/img/enemyWalkRight.png");
+/* harmony import */ var _img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../img/enemyWalkLeft.png */ "./src/img/enemyWalkLeft.png");
+/* harmony import */ var _img_sea_png__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../img/sea.png */ "./src/img/sea.png");
+/* harmony import */ var _img_far_grounds_png__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../img/far-grounds.png */ "./src/img/far-grounds.png");
+/* harmony import */ var _img_tree_png__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../img/tree.png */ "./src/img/tree.png");
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 // Platform import assets
+
+
+
 
 
 
@@ -335,12 +891,12 @@ var gravity = 1.5;
 
 var Player = /*#__PURE__*/function () {
   function Player() {
-    _classCallCheck(this, Player);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Player);
 
     this.speed = 7;
     this.position = {
-      x: 100,
-      y: 100
+      x: 140,
+      y: 283
     };
     this.velocity = {
       x: 0,
@@ -348,18 +904,18 @@ var Player = /*#__PURE__*/function () {
     };
     this.width = 54;
     this.height = 70;
-    this.image = createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
+    this.image = createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_16__["default"]);
     this.frames = 0;
     this.sprites = {
       stand: {
-        right: createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_11__["default"]),
-        left: createImage(_img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_10__["default"]),
+        right: createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_16__["default"]),
+        left: createImage(_img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_15__["default"]),
         cropWidth: 54,
         width: 54
       },
       run: {
-        right: createImage(_img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_9__["default"]),
-        left: createImage(_img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_8__["default"]),
+        right: createImage(_img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_14__["default"]),
+        left: createImage(_img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_13__["default"]),
         cropWidth: 68,
         width: 68
       }
@@ -368,7 +924,7 @@ var Player = /*#__PURE__*/function () {
     this.currentCropWidth = 54;
   }
 
-  _createClass(Player, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Player, [{
     key: "draw",
     value: function draw() {
       c.drawImage(this.currentSprite, this.currentCropWidth * this.frames, 0, this.currentCropWidth, 93, this.position.x, this.position.y, this.width, this.height);
@@ -394,7 +950,7 @@ var Platform = /*#__PURE__*/function () {
         y = _ref.y,
         image = _ref.image;
 
-    _classCallCheck(this, Platform);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Platform);
 
     this.position = {
       x: x,
@@ -405,7 +961,7 @@ var Platform = /*#__PURE__*/function () {
     this.height = image.height;
   }
 
-  _createClass(Platform, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Platform, [{
     key: "draw",
     value: function draw() {
       c.drawImage(this.image, this.position.x, this.position.y);
@@ -421,7 +977,7 @@ var GenericObject = /*#__PURE__*/function () {
         y = _ref2.y,
         image = _ref2.image;
 
-    _classCallCheck(this, GenericObject);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, GenericObject);
 
     this.position = {
       x: x,
@@ -432,7 +988,7 @@ var GenericObject = /*#__PURE__*/function () {
     this.height = image.height;
   }
 
-  _createClass(GenericObject, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(GenericObject, [{
     key: "draw",
     value: function draw() {
       c.drawImage(this.image, this.position.x, this.position.y);
@@ -442,26 +998,83 @@ var GenericObject = /*#__PURE__*/function () {
   return GenericObject;
 }();
 
+var Enemy = /*#__PURE__*/function () {
+  function Enemy(_ref3) {
+    var position = _ref3.position,
+        velocity = _ref3.velocity;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Enemy);
+
+    this.position = {
+      x: position.x,
+      y: position.y
+    };
+    this.velocity = {
+      x: velocity.x,
+      y: velocity.y
+    };
+    this.width = 50;
+    this.height = 74;
+    this.image = createImage(_img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_18__["default"]);
+    this.frames = 0;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Enemy, [{
+    key: "draw",
+    value: function draw() {
+      //c. fillStyle = 'red'
+      //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+      c.drawImage(this.image, 50 * this.frames, 0, 50, 74, this.position.x, this.position.y, this.width, this.height);
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.frames++;
+      if (this.frames >= 7) this.frames = 0;
+      this.draw();
+      this.position.x += this.velocity.x;
+      this.position.y += this.velocity.y;
+      if (this.position.y + this.height + this.velocity.y <= canvas.height) this.velocity.y += gravity;
+    }
+  }]);
+
+  return Enemy;
+}();
+
 function createImage(imageSrc) {
   var image = new Image();
   image.src = imageSrc;
   return image;
 }
 
-var bigPlatformLeftImage = createImage(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
-var floatingPlatformImage = createImage(_img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
-var floatingPlatform2Image = createImage(_img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var bigplatformMiddleImage = createImage(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var bridgeImage = createImage(_img_bridge_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
-var backgroundImage = createImage(_img_sky_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
-var seaImage = createImage(_img_sea_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
-var cloudImage = createImage(_img_clouds_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
-var landImage = createImage(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_13__["default"]);
-var treeImage = createImage(_img_tree_png__WEBPACK_IMPORTED_MODULE_14__["default"]);
-var pillarImage = createImage(_img_pillar_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
+function createImageAsync(imageSrc) {
+  return new Promise(function (resolve) {
+    var image = new Image();
+
+    image.onload = function () {
+      resolve(image);
+    };
+
+    image.src = imageSrc;
+  });
+}
+
+var bigPlatformLeftImage = createImage(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
+var floatingPlatformImage = createImage(_img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
+var floatingPlatform2Image = createImage(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var bigplatformMiddleImage = createImage(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
+var bridgeImage = createImage(_img_bridge_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
+var crossImage1 = createImage(_img_cross1_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
+var backgroundImage = createImage(_img_sky_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
+var seaImage = createImage(_img_sea_png__WEBPACK_IMPORTED_MODULE_19__["default"]);
+var cloudImage = createImage(_img_clouds_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
+var landImage = createImage(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_20__["default"]);
+var treeImage = createImage(_img_tree_png__WEBPACK_IMPORTED_MODULE_21__["default"]);
+var pillarImage = createImage(_img_pillar_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
 var player = new Player();
 var platforms = [];
 var genericObject = [];
+var enemys = [];
 var lastKey;
 var keys = {
   right: {
@@ -473,171 +1086,265 @@ var keys = {
 };
 var scrollOffset = 0;
 
+function isOnTopOfPlatform(_ref4) {
+  var object = _ref4.object,
+      platform = _ref4.platform;
+  return object.position.y + object.height <= platform.position.y + 40 && object.position.y + object.height + object.velocity.y >= platform.position.y + 40 && object.position.x + object.width >= platform.position.x && object.position.x <= platform.position.x + platform.width;
+}
+
+function collisionTop(_ref5) {
+  var object1 = _ref5.object1,
+      object2 = _ref5.object2;
+  return object1.position.y + object1.height <= object2.position.y + 40 && object1.position.y + object1.height + object1.velocity.y >= object2.position.y + 40 && object1.position.x + object1.width >= object2.position.x + 30 && object1.position.x + 30 <= object2.position.x + object2.width;
+}
+
 function init() {
-  floatingPlatformImage = createImage(_img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
-  floatingPlatform2Image = createImage(_img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  bigPlatformLeftImage = createImage(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  bigplatformMiddleImage = createImage(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
-  bridgeImage = createImage(_img_bridge_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
-  backgroundImage = createImage(_img_sky_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
-  cloudImage = createImage(_img_clouds_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
-  seaImage = createImage(_img_sea_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
-  landImage = createImage(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_13__["default"]);
-  treeImage = createImage(_img_tree_png__WEBPACK_IMPORTED_MODULE_14__["default"]);
-  pillarImage = createImage(_img_pillar_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
-  player = new Player();
-  platforms = [// platforms
-  new Platform({
-    x: 815,
-    y: 0,
-    image: pillarImage
-  }), new Platform({
-    x: 0,
-    y: 315,
-    image: bigPlatformLeftImage
-  }), new Platform({
-    x: bigPlatformLeftImage.width + bridgeImage.width - 205,
-    y: 315,
-    image: bigplatformMiddleImage
-  }), new Platform({
-    x: bigPlatformLeftImage.width - 40,
-    y: 315,
-    image: bridgeImage
-  }), //floating Platforms 
-  new Platform({
-    x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width,
-    y: 265,
-    image: floatingPlatformImage
-  }), new Platform({
-    x: 2100,
-    y: 330,
-    image: floatingPlatform2Image
-  }), new Platform({
-    x: 20,
-    y: 35,
-    image: treeImage
-  })];
-  genericObject = [// platform fill
-  //sky assets
-  new GenericObject({
-    x: 0,
-    y: -1,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width,
-    y: 0,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width * 2,
-    y: 0,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width * 3,
-    y: 0,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width * 4,
-    y: 0,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width * 5,
-    y: 0,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width * 6,
-    y: 0,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width * 7,
-    y: 0,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width * 8,
-    y: 0,
-    image: backgroundImage
-  }), new GenericObject({
-    x: backgroundImage.width * 9,
-    y: 0,
-    image: backgroundImage
-  }), // Cloud Assets
-  new GenericObject({
-    x: 0,
-    y: 200,
-    image: cloudImage
-  }), new GenericObject({
-    x: cloudImage.width,
-    y: 200,
-    image: cloudImage
-  }), new GenericObject({
-    x: cloudImage.width * 2,
-    y: 200,
-    image: cloudImage
-  }), new GenericObject({
-    x: cloudImage.width * 3,
-    y: 200,
-    image: cloudImage
-  }), new GenericObject({
-    x: cloudImage.width * 4,
-    y: 200,
-    image: cloudImage
-  }), new GenericObject({
-    x: cloudImage.width * 5,
-    y: 200,
-    image: cloudImage
-  }), new GenericObject({
-    x: cloudImage.width * 6,
-    y: 200,
-    image: cloudImage
-  }), // Sea assets
-  new GenericObject({
-    x: 0,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width * 2,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width * 3,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width * 4,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width * 5,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width * 6,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width * 7,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width * 8,
-    y: 420,
-    image: seaImage
-  }), new GenericObject({
-    x: seaImage.width * 9,
-    y: 420,
-    image: seaImage
-  }), // foreground land
-  new GenericObject({
-    x: 850,
-    y: 465,
-    image: landImage
-  })];
-  scrollOffset = 0;
+  return _init.apply(this, arguments);
 } // Player movement
 
+
+function _init() {
+  _init = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default.a.mark(function _callee() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return createImageAsync(_img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
+
+          case 2:
+            floatingPlatformImage = _context.sent;
+            _context.next = 5;
+            return createImageAsync(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
+
+          case 5:
+            floatingPlatform2Image = _context.sent;
+            _context.next = 8;
+            return createImageAsync(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
+
+          case 8:
+            bigPlatformLeftImage = _context.sent;
+            _context.next = 11;
+            return createImageAsync(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
+
+          case 11:
+            bigplatformMiddleImage = _context.sent;
+            _context.next = 14;
+            return createImageAsync(_img_bridge_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
+
+          case 14:
+            bridgeImage = _context.sent;
+            _context.next = 17;
+            return createImageAsync(_img_cross1_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
+
+          case 17:
+            crossImage1 = _context.sent;
+            _context.next = 20;
+            return createImageAsync(_img_sky_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
+
+          case 20:
+            backgroundImage = _context.sent;
+            _context.next = 23;
+            return createImageAsync(_img_clouds_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
+
+          case 23:
+            cloudImage = _context.sent;
+            _context.next = 26;
+            return createImageAsync(_img_sea_png__WEBPACK_IMPORTED_MODULE_19__["default"]);
+
+          case 26:
+            seaImage = _context.sent;
+            _context.next = 29;
+            return createImageAsync(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_20__["default"]);
+
+          case 29:
+            landImage = _context.sent;
+            _context.next = 32;
+            return createImageAsync(_img_tree_png__WEBPACK_IMPORTED_MODULE_21__["default"]);
+
+          case 32:
+            treeImage = _context.sent;
+            _context.next = 35;
+            return createImageAsync(_img_pillar_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
+
+          case 35:
+            pillarImage = _context.sent;
+            player = new Player();
+            enemys = [new Enemy({
+              position: {
+                x: 800,
+                y: 100
+              },
+              velocity: {
+                x: -.3,
+                y: 0
+              }
+            })]; // all platforms
+
+            platforms = [// platforms
+            new Platform({
+              x: 815,
+              y: 0,
+              image: pillarImage
+            }), new Platform({
+              x: 0,
+              y: 315,
+              image: bigPlatformLeftImage
+            }), new Platform({
+              x: bigPlatformLeftImage.width + bridgeImage.width - 205,
+              y: 315,
+              image: bigplatformMiddleImage
+            }), new Platform({
+              x: bigPlatformLeftImage.width - 40,
+              y: 315,
+              image: bridgeImage
+            }), //floating Platforms 
+            new Platform({
+              x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width,
+              y: 265,
+              image: floatingPlatformImage
+            }), new Platform({
+              x: 2100,
+              y: 330,
+              image: floatingPlatform2Image
+            }), new Platform({
+              x: 20,
+              y: 35,
+              image: treeImage
+            }), new Platform({
+              x: 200,
+              y: 315,
+              image: crossImage1
+            })]; // all background object (affected by scroll offset)
+
+            genericObject = [//sky assets
+            new GenericObject({
+              x: 0,
+              y: -1,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width,
+              y: 0,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width * 2,
+              y: 0,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width * 3,
+              y: 0,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width * 4,
+              y: 0,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width * 5,
+              y: 0,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width * 6,
+              y: 0,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width * 7,
+              y: 0,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width * 8,
+              y: 0,
+              image: backgroundImage
+            }), new GenericObject({
+              x: backgroundImage.width * 9,
+              y: 0,
+              image: backgroundImage
+            }), // Cloud Assets
+            new GenericObject({
+              x: 0,
+              y: 200,
+              image: cloudImage
+            }), new GenericObject({
+              x: cloudImage.width,
+              y: 200,
+              image: cloudImage
+            }), new GenericObject({
+              x: cloudImage.width * 2,
+              y: 200,
+              image: cloudImage
+            }), new GenericObject({
+              x: cloudImage.width * 3,
+              y: 200,
+              image: cloudImage
+            }), new GenericObject({
+              x: cloudImage.width * 4,
+              y: 200,
+              image: cloudImage
+            }), new GenericObject({
+              x: cloudImage.width * 5,
+              y: 200,
+              image: cloudImage
+            }), new GenericObject({
+              x: cloudImage.width * 6,
+              y: 200,
+              image: cloudImage
+            }), // Sea assets
+            new GenericObject({
+              x: 0,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width * 2,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width * 3,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width * 4,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width * 5,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width * 6,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width * 7,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width * 8,
+              y: 420,
+              image: seaImage
+            }), new GenericObject({
+              x: seaImage.width * 9,
+              y: 420,
+              image: seaImage
+            }), // foreground land
+            new GenericObject({
+              x: 850,
+              y: 465,
+              image: landImage
+            })];
+            scrollOffset = 0;
+
+          case 41:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _init.apply(this, arguments);
+}
 
 function animate() {
   requestAnimationFrame(animate);
@@ -648,6 +1355,19 @@ function animate() {
   });
   platforms.forEach(function (platform) {
     platform.draw();
+  });
+  enemys.forEach(function (enemy, index) {
+    enemy.update();
+
+    if (collisionTop({
+      object1: player,
+      object2: enemy
+    })) {
+      player.velocity.y -= 40;
+      setTimeout(function () {
+        enemys.splice(index, 1);
+      }, 0);
+    }
   });
   player.update(); // Player movement left & right
 
@@ -666,6 +1386,9 @@ function animate() {
       genericObject.forEach(function (genericObject) {
         genericObject.position.x -= player.speed * .50;
       });
+      enemys.forEach(function (enemy) {
+        enemy.position.x -= player.speed;
+      });
     } else if (keys.left.pressed && scrollOffset > 0) {
       scrollOffset -= player.speed;
       platforms.forEach(function (platform) {
@@ -674,14 +1397,27 @@ function animate() {
       genericObject.forEach(function (genericObject) {
         genericObject.position.x += player.speed * .50;
       });
+      enemys.forEach(function (enemy) {
+        enemy.position.x += player.speed;
+      });
     }
   } // platform collision detection
 
 
   platforms.forEach(function (platform) {
-    if (player.position.y + player.height <= platform.position.y + 40 && player.position.y + player.height + player.velocity.y >= platform.position.y + 40 && player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x + platform.width) {
+    if (isOnTopOfPlatform({
+      object: player,
+      platform: platform
+    })) {
       player.velocity.y = 0;
     }
+
+    enemys.forEach(function (enemy) {
+      if (isOnTopOfPlatform({
+        object: enemy,
+        platform: platform
+      })) enemy.velocity.y = 0;
+    });
   });
 
   if (keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.run.right) {
@@ -716,8 +1452,8 @@ function animate() {
 init();
 animate(); // Event listener for movement
 
-window.addEventListener('keydown', function (_ref3) {
-  var keyCode = _ref3.keyCode;
+window.addEventListener('keydown', function (_ref6) {
+  var keyCode = _ref6.keyCode;
 
   // Action for "A" key
   switch (keyCode) {
@@ -741,17 +1477,13 @@ window.addEventListener('keydown', function (_ref3) {
     // Action for "W" key
 
     case 87:
-      if (event.repeat) {
-        return;
-      }
-
       console.log('up');
       player.velocity.y -= 19;
       break;
   }
 });
-window.addEventListener('keyup', function (_ref4) {
-  var keyCode = _ref4.keyCode;
+window.addEventListener('keyup', function (_ref7) {
+  var keyCode = _ref7.keyCode;
 
   // Action for "A" key
   switch (keyCode) {

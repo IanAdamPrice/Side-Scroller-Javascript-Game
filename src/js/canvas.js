@@ -1,21 +1,21 @@
 // Platform import assets
-import platform from '../img/platform1.png'
-import platform2 from '../img/tileset.png'
-import platformSmall from '../img/platform2.png'
-import platformEnd from '../img/platformEnd.png'
+
 import floatingPlatform from '../img/floatingPlatform.png'
+import floatingPlatform2 from '../img/floatingPlatform2.png'
 import bigPlatformLeft from '../img/bigPlatformLeft.png'
-import bridgeStart from '../img/bridgeStart.png'
-import bridgeMiddle from '../img/bridgeMiddle.png'
-import bridgeEnd from '../img/bridgeEnd.png'
+import bigPlatformMiddle from '../img/bigPlatformMiddle.png'
+import bridge from '../img/bridge.png'
 import clouds from '../img/clouds.png'
 import background from '../img/sky.png'
+import pillar from '../img/pillar.png'
+
 import spriteRunLeft from '../img/spriteRunLeft.png'
 import spriteRunRight from '../img/spriteRunRight.png'
 import spriteStandLeft from '../img/spriteStandLeft.png'
 import spriteStandRight from '../img/spriteStandRight.png'
 import sea from '../img/sea.png'
 import land from '../img/far-grounds.png'
+
 import tree from '../img/tree.png'
 
 
@@ -23,14 +23,14 @@ const canvas = document.querySelector('canvas');
 
 const c = canvas.getContext('2d');
 
-canvas.width = 1300
-canvas.height = 576
+canvas.width = 900
+canvas.height = 600
 
 const gravity = 1.5
 
 class Player {
   constructor() {
-    this.speed = 10
+    this.speed = 7
     this.position = {
       x: 100,
       y: 100
@@ -135,20 +135,18 @@ function createImage(imageSrc) {
   return image
 }
 
-let platformImage = createImage(platform)
-let platformImageMiddle = createImage(platform2)
-let platformEndImage = createImage(platformEnd)
-let platformSmallImage = createImage(platformSmall)
+
 let bigPlatformLeftImage = createImage(bigPlatformLeft)
 let floatingPlatformImage = createImage(floatingPlatform)
-let bridgeStartImage = createImage(bridgeStart)
-let bridgeMiddleImage = createImage(bridgeMiddle)
-let bridgeEndImage = createImage(bridgeEnd)
+let floatingPlatform2Image = createImage(floatingPlatform2)
+let bigplatformMiddleImage = createImage(bigPlatformMiddle)
+let bridgeImage = createImage(bridge)
 let backgroundImage = createImage(background)
 let seaImage = createImage(sea)
 let cloudImage = createImage(clouds)
 let landImage = createImage(land)
 let treeImage = createImage(tree)
+let pillarImage = createImage(pillar)
 
 
 let player = new Player()
@@ -172,22 +170,23 @@ let scrollOffset = 0
 
 function init() {
 
-  platformImageMiddle = createImage(platform2)
-  platformEndImage = createImage(platformEnd)
-  platformImage = createImage(platform)
-  platformSmallImage = createImage(platformSmall)
+
   floatingPlatformImage = createImage(floatingPlatform)
+  floatingPlatform2Image = createImage(floatingPlatform2)
+
   bigPlatformLeftImage = createImage(bigPlatformLeft)
-  bridgeStartImage = createImage(bridgeStart)
-  bridgeMiddleImage = createImage(bridgeMiddle)
-  bridgeEndImage = createImage(bridgeEnd)
+  bigplatformMiddleImage = createImage(bigPlatformMiddle)
+  bridgeImage = createImage(bridge)
 
 
   backgroundImage = createImage(background)
   cloudImage = createImage(clouds)
   seaImage = createImage(sea)
+  landImage = createImage(land)
+
 
   treeImage = createImage(tree)
+  pillarImage = createImage(pillar)
 
 
 
@@ -195,36 +194,23 @@ function init() {
 
   platforms = [
     // platforms
-    // new Platform({ x: platformImageMiddle.width * 3 -15, y: 323, image: platformEndImage }),
-    // new Platform({ x: -2, y: 323, image: platformImageMiddle }),
-    // new Platform({ x: platformImageMiddle.width - 7, y: 323, image: platformSmallImage }),
-    // new Platform({ x: platformImageMiddle.width * 2 - 14, y: 323, image: platformImageMiddle }),
-    // new Platform({ x: platformImageMiddle.width * 3 , y: 325, image: bridgeStartImage}),
-    // new Platform({ x: platformImageMiddle.width * 4 -15, y: 323, image: bridgeMiddleImage}),
-    // new Platform({ x: platformImageMiddle.width * 4 +49, y: 323, image: bridgeMiddleImage}),
-    // new Platform({ x: platformImageMiddle.width * 5 +10, y: 323, image: bridgeMiddleImage}),
-    // new Platform({ x: platformImageMiddle.width * 6 -24, y: 323, image: bridgeMiddleImage}),
-    // new Platform({ x: platformImageMiddle.width * 7 -55, y: 325, image: bridgeEndImage}),
+    new Platform({ x: 815, y: 0, image: pillarImage}),
+
+    new Platform({x: 0, y: 315, image: bigPlatformLeftImage}),
+    new Platform({x: bigPlatformLeftImage.width + bridgeImage.width - 205, y: 315, image: bigplatformMiddleImage}),
+    new Platform({x: bigPlatformLeftImage.width -40, y: 315, image: bridgeImage}),
+    
     
     //floating Platforms 
-    new Platform({ x: 700, y: 130, image: floatingPlatformImage}),
-
-    new Platform({ x: 20, y: -6, image: treeImage})
-
-
-
-
+    new Platform({ 
+      x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width , 
+      y: 265, 
+      image: floatingPlatformImage}),
+    new Platform({ x: 2100, y: 330, image: floatingPlatform2Image}),
 
 
+    new Platform({ x: 20, y: 35, image: treeImage}),
 
-
-
-    //new Platform({ x: -30, y: 399, image: platformImage }), 
-
-    // new Platform({ x: platformImage.width * 2 + 100, y:470, image: platformImage }),
-    // new Platform({ x: platformImage.width * 3 + 300, y:470, image: platformImage }),
-    // new Platform({ x: platformImage.width * 4 + 300 - 2, y:470, image: platformImage }),
-    // new Platform({ x: platformImage.width * 5 + 700 - 2, y:470, image: platformImage })
   ]
 
   genericObject = [
@@ -254,19 +240,20 @@ function init() {
 
 
     // Sea assets
-    new GenericObject({ x: 0, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width * 2, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width * 3, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width * 4, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width * 5, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width * 6, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width * 7, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width * 8, y: 384, image: seaImage }),
-    new GenericObject({ x: seaImage.width * 9, y: 384, image: seaImage }),
+    new GenericObject({ x: 0, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 2, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 3, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 4, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 5, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 6, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 7, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 8, y: 420, image: seaImage }),
+    new GenericObject({ x: seaImage.width * 9, y: 420, image: seaImage }),
 
     // foreground land
-    new GenericObject({ x: 850, y: 435, image: landImage}),
+    new GenericObject({ x: 850, y: 465, image: landImage}),
+
 
  
   ]
@@ -288,9 +275,9 @@ function animate() {
 
 
   // Player movement left & right
-  if (keys.right.pressed && player.position.x < 400) {
+  if (keys.right.pressed && player.position.x < 200) {
     player.velocity.x = player.speed
-  } else if ((keys.left.pressed && player.position.x > 100)
+  } else if ((keys.left.pressed && player.position.x > 400)
     || keys.left.pressed && scrollOffset === 0 && player.position.x > 0) {
     player.velocity.x = -player.speed
   } else {
@@ -303,7 +290,7 @@ function animate() {
       platform.position.x -= player.speed
     })
     genericObject.forEach(genericObject => {
-      genericObject.position.x -= player.speed *.60
+      genericObject.position.x -= player.speed *.50
     })
   } else if (keys.left.pressed && scrollOffset > 0) {
     scrollOffset -= player.speed
@@ -311,7 +298,7 @@ function animate() {
         platform.position.x += player.speed
       })
       genericObject.forEach(genericObject => {
-        genericObject.position.x += player.speed *.60
+        genericObject.position.x += player.speed *.50
       })
     }
   }
@@ -320,8 +307,8 @@ function animate() {
   // platform collision detection
   platforms.forEach((platform) => {
     if (
-      player.position.y + player.height <= platform.position.y +2
-      && player.position.y + player.height + player.velocity.y >= platform.position.y +2 
+      player.position.y + player.height <= platform.position.y +40
+      && player.position.y + player.height + player.velocity.y >= platform.position.y +40 
       && player.position.x + player.width >= platform.position.x 
       && player.position.x <= platform.position.x + platform.width) {
       player.velocity.y = 0
@@ -387,7 +374,7 @@ window.addEventListener('keydown', ({ keyCode }) => {
     case 87: 
       if (event.repeat) {return}
       console.log('up');
-      player.velocity.y -= 21
+      player.velocity.y -= 19
       break
   }
 });

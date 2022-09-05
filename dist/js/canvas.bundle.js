@@ -665,7 +665,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "0bf048f981389de8916c95536ba8304b.png");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "4584c5aa7b936db9e63b6fe2002d3aed.png");
 
 /***/ }),
 
@@ -708,6 +708,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/img/floatingPlatform2.png":
+/*!***************************************!*\
+  !*** ./src/img/floatingPlatform2.png ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "210c182ec151c7117003cb9b8afec58a.png");
+
+/***/ }),
+
 /***/ "./src/img/floatingPlatform3.png":
 /*!***************************************!*\
   !*** ./src/img/floatingPlatform3.png ***!
@@ -718,6 +731,32 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "ab9181a524491161c13401d316f1f9ea.png");
+
+/***/ }),
+
+/***/ "./src/img/jumpLeft.png":
+/*!******************************!*\
+  !*** ./src/img/jumpLeft.png ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "b60fc42110c5a8f65a1646a74a79339f.png");
+
+/***/ }),
+
+/***/ "./src/img/jumpRight.png":
+/*!*******************************!*\
+  !*** ./src/img/jumpRight.png ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "bc545dd0dd209a5105633182894dbd46.png");
 
 /***/ }),
 
@@ -843,28 +882,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/floatingPlatform.png */ "./src/img/floatingPlatform.png");
-/* harmony import */ var _img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/floatingPlatform3.png */ "./src/img/floatingPlatform3.png");
-/* harmony import */ var _img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/bigPlatformLeft.png */ "./src/img/bigPlatformLeft.png");
-/* harmony import */ var _img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/bigPlatformMiddle.png */ "./src/img/bigPlatformMiddle.png");
-/* harmony import */ var _img_bridge_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/bridge.png */ "./src/img/bridge.png");
-/* harmony import */ var _img_cross1_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/cross1.png */ "./src/img/cross1.png");
-/* harmony import */ var _img_clouds_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/clouds.png */ "./src/img/clouds.png");
-/* harmony import */ var _img_sky_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/sky.png */ "./src/img/sky.png");
-/* harmony import */ var _img_pillar_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../img/pillar.png */ "./src/img/pillar.png");
-/* harmony import */ var _img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/spriteRunLeft.png */ "./src/img/spriteRunLeft.png");
-/* harmony import */ var _img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/spriteRunRight.png */ "./src/img/spriteRunRight.png");
-/* harmony import */ var _img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/spriteStandLeft.png */ "./src/img/spriteStandLeft.png");
-/* harmony import */ var _img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/spriteStandRight.png */ "./src/img/spriteStandRight.png");
-/* harmony import */ var _img_enemyWalkRight_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../img/enemyWalkRight.png */ "./src/img/enemyWalkRight.png");
-/* harmony import */ var _img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../img/enemyWalkLeft.png */ "./src/img/enemyWalkLeft.png");
-/* harmony import */ var _img_sea_png__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../img/sea.png */ "./src/img/sea.png");
-/* harmony import */ var _img_far_grounds_png__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../img/far-grounds.png */ "./src/img/far-grounds.png");
-/* harmony import */ var _img_tree_png__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../img/tree.png */ "./src/img/tree.png");
+/* harmony import */ var _img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/floatingPlatform2.png */ "./src/img/floatingPlatform2.png");
+/* harmony import */ var _img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/floatingPlatform3.png */ "./src/img/floatingPlatform3.png");
+/* harmony import */ var _img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/bigPlatformLeft.png */ "./src/img/bigPlatformLeft.png");
+/* harmony import */ var _img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/bigPlatformMiddle.png */ "./src/img/bigPlatformMiddle.png");
+/* harmony import */ var _img_bridge_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/bridge.png */ "./src/img/bridge.png");
+/* harmony import */ var _img_cross1_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/cross1.png */ "./src/img/cross1.png");
+/* harmony import */ var _img_clouds_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/clouds.png */ "./src/img/clouds.png");
+/* harmony import */ var _img_sky_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../img/sky.png */ "./src/img/sky.png");
+/* harmony import */ var _img_pillar_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/pillar.png */ "./src/img/pillar.png");
+/* harmony import */ var _img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/spriteRunLeft.png */ "./src/img/spriteRunLeft.png");
+/* harmony import */ var _img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/spriteRunRight.png */ "./src/img/spriteRunRight.png");
+/* harmony import */ var _img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/spriteStandLeft.png */ "./src/img/spriteStandLeft.png");
+/* harmony import */ var _img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../img/spriteStandRight.png */ "./src/img/spriteStandRight.png");
+/* harmony import */ var _img_jumpRight_png__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../img/jumpRight.png */ "./src/img/jumpRight.png");
+/* harmony import */ var _img_jumpLeft_png__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../img/jumpLeft.png */ "./src/img/jumpLeft.png");
+/* harmony import */ var _img_enemyWalkRight_png__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../img/enemyWalkRight.png */ "./src/img/enemyWalkRight.png");
+/* harmony import */ var _img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../img/enemyWalkLeft.png */ "./src/img/enemyWalkLeft.png");
+/* harmony import */ var _img_sea_png__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../img/sea.png */ "./src/img/sea.png");
+/* harmony import */ var _img_far_grounds_png__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../img/far-grounds.png */ "./src/img/far-grounds.png");
+/* harmony import */ var _img_tree_png__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../img/tree.png */ "./src/img/tree.png");
 
 
 
 
 // Platform import assets
+
+
+
 
 
 
@@ -904,20 +949,26 @@ var Player = /*#__PURE__*/function () {
     };
     this.width = 54;
     this.height = 70;
-    this.image = createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_16__["default"]);
+    this.image = createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_17__["default"]);
     this.frames = 0;
     this.sprites = {
       stand: {
-        right: createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_16__["default"]),
-        left: createImage(_img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_15__["default"]),
+        right: createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_17__["default"]),
+        left: createImage(_img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_16__["default"]),
         cropWidth: 54,
         width: 54
       },
       run: {
-        right: createImage(_img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_14__["default"]),
-        left: createImage(_img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_13__["default"]),
+        right: createImage(_img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_15__["default"]),
+        left: createImage(_img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_14__["default"]),
         cropWidth: 68,
         width: 68
+      },
+      jump: {
+        right: createImage(_img_jumpRight_png__WEBPACK_IMPORTED_MODULE_18__["default"]),
+        left: createImage(_img_jumpLeft_png__WEBPACK_IMPORTED_MODULE_19__["default"]),
+        cropWidth: 49,
+        width: 50
       }
     };
     this.currentSprite = this.sprites.stand.right;
@@ -933,7 +984,7 @@ var Player = /*#__PURE__*/function () {
     key: "update",
     value: function update() {
       this.frames++;
-      if (this.frames > 39 && (this.currentSprite === this.sprites.stand.right || this.currentSprite === this.sprites.stand.left)) this.frames = 0;else if (this.frames > 39 && (this.currentSprite === this.sprites.run.right || this.currentSprite === this.sprites.run.left)) this.frames = 0;
+      if (this.frames > 39 && (this.currentSprite === this.sprites.stand.right || this.currentSprite === this.sprites.stand.left)) this.frames = 0;else if (this.frames > 39 && (this.currentSprite === this.sprites.run.right || this.currentSprite === this.sprites.run.left)) this.frames = 0;else if (this.frames > 7 && (this.currentSprite === this.sprites.jump.right || this.currentSprite === this.sprites.jump.left)) this.frames = 0;
       this.draw();
       this.position.x += this.velocity.x;
       this.position.y += this.velocity.y;
@@ -1001,7 +1052,12 @@ var GenericObject = /*#__PURE__*/function () {
 var Enemy = /*#__PURE__*/function () {
   function Enemy(_ref3) {
     var position = _ref3.position,
-        velocity = _ref3.velocity;
+        velocity = _ref3.velocity,
+        _ref3$distance = _ref3.distance,
+        distance = _ref3$distance === void 0 ? {
+      limit: 50,
+      traveled: 0
+    } : _ref3$distance;
 
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Enemy);
 
@@ -1013,10 +1069,11 @@ var Enemy = /*#__PURE__*/function () {
       x: velocity.x,
       y: velocity.y
     };
-    this.width = 50;
+    this.width = 46;
     this.height = 74;
-    this.image = createImage(_img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_18__["default"]);
+    this.image = createImage(_img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_21__["default"]);
     this.frames = 0;
+    this.distance = distance;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Enemy, [{
@@ -1024,21 +1081,71 @@ var Enemy = /*#__PURE__*/function () {
     value: function draw() {
       //c. fillStyle = 'red'
       //c.fillRect(this.position.x, this.position.y, this.width, this.height)
-      c.drawImage(this.image, 50 * this.frames, 0, 50, 74, this.position.x, this.position.y, this.width, this.height);
+      c.drawImage(this.image, 46 * this.frames, 0, 46, 74, this.position.x, this.position.y, this.width, this.height);
     }
   }, {
     key: "update",
     value: function update() {
       this.frames++;
-      if (this.frames >= 7) this.frames = 0;
+      if (this.frames >= 29) this.frames = 0;
       this.draw();
       this.position.x += this.velocity.x;
       this.position.y += this.velocity.y;
-      if (this.position.y + this.height + this.velocity.y <= canvas.height) this.velocity.y += gravity;
+      if (this.position.y + this.height + this.velocity.y <= canvas.height) this.velocity.y += gravity; //walk the enemy back and forth
+
+      this.distance.traveled += Math.abs(this.velocity.x);
+
+      if (this.distance.traveled > this.distance.limit) {
+        this.distance.traveled = 0;
+        this.velocity.x = -this.velocity.x;
+      }
     }
   }]);
 
   return Enemy;
+}();
+
+var Particle = /*#__PURE__*/function () {
+  function Particle(_ref4) {
+    var position = _ref4.position,
+        velocity = _ref4.velocity,
+        radius = _ref4.radius;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Particle);
+
+    this.position = {
+      x: position.x,
+      y: position.y
+    };
+    this.velocity = {
+      x: velocity.x,
+      y: velocity.y
+    };
+    this.radius = 3;
+    this.ttl = 300;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Particle, [{
+    key: "draw",
+    value: function draw() {
+      c.beginPath();
+      c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2, false);
+      c.fillStyle = '#BDAB94';
+      c.fill();
+      c.closePath();
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.ttl--;
+      this.draw();
+      this.position.x += this.velocity.x;
+      this.position.y += this.velocity.y;
+      if (this.position.y + this.radius + this.velocity.y <= canvas.height) this.velocity.y += gravity * 0.1;
+    }
+  }]);
+
+  return Particle;
 }();
 
 function createImage(imageSrc) {
@@ -1059,22 +1166,24 @@ function createImageAsync(imageSrc) {
   });
 }
 
-var bigPlatformLeftImage = createImage(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
+var bigPlatformLeftImage = createImage(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
 var floatingPlatformImage = createImage(_img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
-var floatingPlatform2Image = createImage(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
-var bigplatformMiddleImage = createImage(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
-var bridgeImage = createImage(_img_bridge_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
-var crossImage1 = createImage(_img_cross1_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
-var backgroundImage = createImage(_img_sky_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
-var seaImage = createImage(_img_sea_png__WEBPACK_IMPORTED_MODULE_19__["default"]);
-var cloudImage = createImage(_img_clouds_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
-var landImage = createImage(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_20__["default"]);
-var treeImage = createImage(_img_tree_png__WEBPACK_IMPORTED_MODULE_21__["default"]);
-var pillarImage = createImage(_img_pillar_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
+var floatingPlatform2Image = createImageAsync(_img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var floatingPlatform3Image = createImage(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
+var bigplatformMiddleImage = createImage(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
+var bridgeImage = createImage(_img_bridge_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
+var crossImage1 = createImage(_img_cross1_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
+var backgroundImage = createImage(_img_sky_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
+var seaImage = createImage(_img_sea_png__WEBPACK_IMPORTED_MODULE_22__["default"]);
+var cloudImage = createImage(_img_clouds_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
+var landImage = createImage(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_23__["default"]);
+var treeImage = createImage(_img_tree_png__WEBPACK_IMPORTED_MODULE_24__["default"]);
+var pillarImage = createImage(_img_pillar_png__WEBPACK_IMPORTED_MODULE_13__["default"]);
 var player = new Player();
 var platforms = [];
 var genericObject = [];
 var enemys = [];
+var particles = [];
 var lastKey;
 var keys = {
   right: {
@@ -1084,18 +1193,26 @@ var keys = {
     pressed: false
   }
 };
-var scrollOffset = 0;
+var scrollOffset = 0; // character collision
 
-function isOnTopOfPlatform(_ref4) {
-  var object = _ref4.object,
-      platform = _ref4.platform;
+function isOnTopOfPlatform(_ref5) {
+  var object = _ref5.object,
+      platform = _ref5.platform;
   return object.position.y + object.height <= platform.position.y + 40 && object.position.y + object.height + object.velocity.y >= platform.position.y + 40 && object.position.x + object.width >= platform.position.x && object.position.x <= platform.position.x + platform.width;
-}
+} // enemy collision
 
-function collisionTop(_ref5) {
-  var object1 = _ref5.object1,
-      object2 = _ref5.object2;
-  return object1.position.y + object1.height <= object2.position.y + 40 && object1.position.y + object1.height + object1.velocity.y >= object2.position.y + 40 && object1.position.x + object1.width >= object2.position.x + 30 && object1.position.x + 30 <= object2.position.x + object2.width;
+
+function collisionTop(_ref6) {
+  var object1 = _ref6.object1,
+      object2 = _ref6.object2;
+  return object1.position.y + object1.height <= object2.position.y && object1.position.y + object1.height + object1.velocity.y >= object2.position.y && object1.position.x + object1.width >= object2.position.x && object1.position.x <= object2.position.x + object2.width;
+} // particle collision
+
+
+function isOnTopOfPlatformCircle(_ref7) {
+  var object = _ref7.object,
+      platform = _ref7.platform;
+  return object.position.y + object.radius <= platform.position.y + 40 && object.position.y + object.radius + object.velocity.y >= platform.position.y + 40 && object.position.x + object.radius >= platform.position.x && object.position.x <= platform.position.x + platform.width;
 }
 
 function init() {
@@ -1115,71 +1232,83 @@ function _init() {
           case 2:
             floatingPlatformImage = _context.sent;
             _context.next = 5;
-            return createImageAsync(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
+            return createImageAsync(_img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
           case 5:
             floatingPlatform2Image = _context.sent;
             _context.next = 8;
-            return createImageAsync(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
+            return createImageAsync(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
 
           case 8:
-            bigPlatformLeftImage = _context.sent;
+            floatingPlatform3Image = _context.sent;
             _context.next = 11;
-            return createImageAsync(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
+            return createImageAsync(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
 
           case 11:
-            bigplatformMiddleImage = _context.sent;
+            bigPlatformLeftImage = _context.sent;
             _context.next = 14;
-            return createImageAsync(_img_bridge_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
+            return createImageAsync(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
 
           case 14:
-            bridgeImage = _context.sent;
+            bigplatformMiddleImage = _context.sent;
             _context.next = 17;
-            return createImageAsync(_img_cross1_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
+            return createImageAsync(_img_bridge_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
 
           case 17:
-            crossImage1 = _context.sent;
+            bridgeImage = _context.sent;
             _context.next = 20;
-            return createImageAsync(_img_sky_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
+            return createImageAsync(_img_cross1_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
 
           case 20:
-            backgroundImage = _context.sent;
+            crossImage1 = _context.sent;
             _context.next = 23;
-            return createImageAsync(_img_clouds_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
+            return createImageAsync(_img_sky_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
 
           case 23:
-            cloudImage = _context.sent;
+            backgroundImage = _context.sent;
             _context.next = 26;
-            return createImageAsync(_img_sea_png__WEBPACK_IMPORTED_MODULE_19__["default"]);
+            return createImageAsync(_img_clouds_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
 
           case 26:
-            seaImage = _context.sent;
+            cloudImage = _context.sent;
             _context.next = 29;
-            return createImageAsync(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_20__["default"]);
+            return createImageAsync(_img_sea_png__WEBPACK_IMPORTED_MODULE_22__["default"]);
 
           case 29:
-            landImage = _context.sent;
+            seaImage = _context.sent;
             _context.next = 32;
-            return createImageAsync(_img_tree_png__WEBPACK_IMPORTED_MODULE_21__["default"]);
+            return createImageAsync(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_23__["default"]);
 
           case 32:
-            treeImage = _context.sent;
+            landImage = _context.sent;
             _context.next = 35;
-            return createImageAsync(_img_pillar_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
+            return createImageAsync(_img_tree_png__WEBPACK_IMPORTED_MODULE_24__["default"]);
 
           case 35:
+            treeImage = _context.sent;
+            _context.next = 38;
+            return createImageAsync(_img_pillar_png__WEBPACK_IMPORTED_MODULE_13__["default"]);
+
+          case 38:
             pillarImage = _context.sent;
-            player = new Player();
+            player = new Player(); // all enemy placement
+
             enemys = [new Enemy({
               position: {
-                x: 800,
+                x: 1200,
                 y: 100
               },
               velocity: {
                 x: -.3,
                 y: 0
+              },
+              distance: {
+                limit: 200,
+                traveled: 0
               }
-            })]; // all platforms
+            })]; // particle placement
+
+            particles = []; // all platforms
 
             platforms = [// platforms
             new Platform({
@@ -1200,13 +1329,13 @@ function _init() {
               image: bridgeImage
             }), //floating Platforms 
             new Platform({
-              x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width,
+              x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width - 20,
               y: 265,
               image: floatingPlatformImage
             }), new Platform({
               x: 2100,
               y: 330,
-              image: floatingPlatform2Image
+              image: floatingPlatform3Image
             }), new Platform({
               x: 20,
               y: 35,
@@ -1336,7 +1465,7 @@ function _init() {
             })];
             scrollOffset = 0;
 
-          case 41:
+          case 45:
           case "end":
             return _context.stop();
         }
@@ -1357,17 +1486,34 @@ function animate() {
     platform.draw();
   });
   enemys.forEach(function (enemy, index) {
-    enemy.update();
+    enemy.update(); // enemy stomp
 
     if (collisionTop({
       object1: player,
       object2: enemy
     })) {
-      player.velocity.y -= 40;
+      for (var i = 0; i < 50; i++) {
+        particles.push(new Particle({
+          position: {
+            x: enemy.position.x + enemy.width / 2,
+            y: enemy.position.y + enemy.width / 2
+          },
+          velocity: {
+            x: (Math.random() - 0.5) * 2,
+            y: Math.random() - 0.5 * 2
+          },
+          radius: Math.random() * 3
+        }));
+      }
+
+      player.velocity.y -= 30;
       setTimeout(function () {
         enemys.splice(index, 1);
       }, 0);
-    }
+    } else if (player.position.x + player.width >= enemy.position.x && player.position.y + player.height >= enemy.position.y && player.position.x <= enemy.position.x + enemy.width) init();
+  });
+  particles.forEach(function (particle) {
+    particle.update();
   });
   player.update(); // Player movement left & right
 
@@ -1389,6 +1535,9 @@ function animate() {
       enemys.forEach(function (enemy) {
         enemy.position.x -= player.speed;
       });
+      particles.forEach(function (particle) {
+        particle.position.x -= player.speed;
+      });
     } else if (keys.left.pressed && scrollOffset > 0) {
       scrollOffset -= player.speed;
       platforms.forEach(function (platform) {
@@ -1400,6 +1549,9 @@ function animate() {
       enemys.forEach(function (enemy) {
         enemy.position.x += player.speed;
       });
+      particles.forEach(function (particle) {
+        particle.position.x += player.speed;
+      });
     }
   } // platform collision detection
 
@@ -1410,33 +1562,47 @@ function animate() {
       platform: platform
     })) {
       player.velocity.y = 0;
-    }
+    } // particles bounce
 
+
+    particles.forEach(function (particle, index) {
+      if (isOnTopOfPlatformCircle({
+        object: particle,
+        platform: platform
+      })) {
+        particle.velocity.y = -particle.velocity.y * .5;
+        if (particle.radius - 0.4 < 0) particles.splice(index, 1);else particle.radius -= 0.4;
+      }
+
+      if (particle.ttl < 0) particles.splice(index, 1);
+    });
     enemys.forEach(function (enemy) {
       if (isOnTopOfPlatform({
         object: enemy,
         platform: platform
       })) enemy.velocity.y = 0;
     });
-  });
+  }); // sprite switching
 
-  if (keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.run.right) {
-    player.frames = 1;
-    player.currentSprite = player.sprites.run.right;
-    player.currentCropWidth = player.sprites.run.cropWidth;
-    player.width = player.sprites.run.width;
-  } else if (keys.left.pressed && lastKey === 'left' && player.currentSprite !== player.sprites.run.left) {
-    player.currentSprite = player.sprites.run.left;
-    player.currentCropWidth = player.sprites.run.cropWidth;
-    player.width = player.sprites.run.width;
-  } else if (!keys.left.pressed && lastKey === 'left' && player.currentSprite !== player.sprites.stand.left) {
-    player.currentSprite = player.sprites.stand.left;
-    player.currentCropWidth = player.sprites.stand.cropWidth;
-    player.width = player.sprites.stand.width;
-  } else if (!keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.stand.right) {
-    player.currentSprite = player.sprites.stand.right;
-    player.currentCropWidth = player.sprites.stand.cropWidth;
-    player.width = player.sprites.stand.width;
+  if (player.velocity.y === 0) {
+    if (keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.run.right) {
+      player.frames = 1;
+      player.currentSprite = player.sprites.run.right;
+      player.currentCropWidth = player.sprites.run.cropWidth;
+      player.width = player.sprites.run.width;
+    } else if (keys.left.pressed && lastKey === 'left' && player.currentSprite !== player.sprites.run.left) {
+      player.currentSprite = player.sprites.run.left;
+      player.currentCropWidth = player.sprites.run.cropWidth;
+      player.width = player.sprites.run.width;
+    } else if (!keys.left.pressed && lastKey === 'left' && player.currentSprite !== player.sprites.stand.left) {
+      player.currentSprite = player.sprites.stand.left;
+      player.currentCropWidth = player.sprites.stand.cropWidth;
+      player.width = player.sprites.stand.width;
+    } else if (!keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.stand.right) {
+      player.currentSprite = player.sprites.stand.right;
+      player.currentCropWidth = player.sprites.stand.cropWidth;
+      player.width = player.sprites.stand.width;
+    }
   }
 
   if (scrollOffset > 2000) {
@@ -1452,8 +1618,8 @@ function animate() {
 init();
 animate(); // Event listener for movement
 
-window.addEventListener('keydown', function (_ref6) {
-  var keyCode = _ref6.keyCode;
+window.addEventListener('keydown', function (_ref8) {
+  var keyCode = _ref8.keyCode;
 
   // Action for "A" key
   switch (keyCode) {
@@ -1478,12 +1644,13 @@ window.addEventListener('keydown', function (_ref6) {
 
     case 87:
       console.log('up');
-      player.velocity.y -= 19;
+      if (player.velocity.y === 0) player.velocity.y = -20;
+      if (lastKey === 'right') player.currentSprite = player.sprites.jump.right;else player.currentSprite = player.sprites.jump.left;
       break;
   }
 });
-window.addEventListener('keyup', function (_ref7) {
-  var keyCode = _ref7.keyCode;
+window.addEventListener('keyup', function (_ref9) {
+  var keyCode = _ref9.keyCode;
 
   // Action for "A" key
   switch (keyCode) {

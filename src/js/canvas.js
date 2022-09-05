@@ -1,25 +1,26 @@
 // Platform import assets
 
 import floatingPlatform from '../img/floatingPlatform.png'
-import floatingPlatform2 from '../img/floatingPlatform3.png'
+import floatingPlatform2 from '../img/floatingPlatform2.png'
+import floatingPlatform3 from '../img/floatingPlatform3.png'
+
 import bigPlatformLeft from '../img/bigPlatformLeft.png'
 import bigPlatformMiddle from '../img/bigPlatformMiddle.png'
 import bridge from '../img/bridge.png'
 import cross1 from '../img/cross1.png'
-
 import clouds from '../img/clouds.png'
 import background from '../img/sky.png'
 import pillar from '../img/pillar.png'
-
 import spriteRunLeft from '../img/spriteRunLeft.png'
 import spriteRunRight from '../img/spriteRunRight.png'
 import spriteStandLeft from '../img/spriteStandLeft.png'
 import spriteStandRight from '../img/spriteStandRight.png'
+import jumpRight from '../img/jumpRight.png'
+import jumpLeft from '../img/jumpLeft.png'
 import enemyWalkRight from '../img/enemyWalkRight.png'
 import enemyWalkLeft from '../img/enemyWalkLeft.png'
 import sea from '../img/sea.png'
 import land from '../img/far-grounds.png'
-
 import tree from '../img/tree.png'
 
 
@@ -61,6 +62,12 @@ class Player {
         left: createImage(spriteRunLeft),
         cropWidth: 68,
         width: 68
+      },
+      jump: {
+        right: createImage(jumpRight),
+        left: createImage(jumpLeft),
+        cropWidth: 49,
+        width: 50
       }
     }
 
@@ -87,6 +94,10 @@ class Player {
       this.frames = 0
     else if (this.frames > 39 && (this.currentSprite === this.sprites.run.right || this.currentSprite === this.sprites.run.left)) 
       this.frames = 0
+    else if (this.frames > 7 &&  (this.currentSprite === this.sprites.jump.right || this.currentSprite === this.sprites.jump.left))
+      this.frames = 0
+
+
     this.draw()
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
@@ -134,7 +145,10 @@ class GenericObject {
 }
 
 class Enemy {
-  constructor({position, velocity}) {
+  constructor({position, velocity, distance = {
+      limit:  50,
+      traveled: 0
+  }}) {
     this.position ={
       x: position.x,
       y: position.y
@@ -145,11 +159,13 @@ class Enemy {
       y: velocity.y
     }
 
-    this.width = 50
+    this.width = 46
     this.height = 74
 
     this.image = createImage(enemyWalkLeft)
     this.frames = 0
+
+    this.distance = distance
   }
 
   draw() {
@@ -157,9 +173,9 @@ class Enemy {
     //c.fillRect(this.position.x, this.position.y, this.width, this.height)
     c.drawImage(
       this.image, 
-      50 * this.frames,
+      46 * this.frames,
       0,
-      50,
+      46,
       74,
       this.position.x, 
       this.position.y, 
@@ -169,7 +185,7 @@ class Enemy {
 
   update() {
     this.frames++
-    if (this.frames >= 7) this.frames = 0
+    if (this.frames >= 29) this.frames = 0
     this.draw()
 
     this.position.x += this.velocity.x
@@ -177,6 +193,50 @@ class Enemy {
 
     if (this.position.y + this.height + this.velocity.y <= canvas.height)
       this.velocity.y += gravity
+
+    //walk the enemy back and forth
+    this.distance.traveled += Math.abs(this.velocity.x)
+
+    if (this.distance.traveled > this.distance.limit) {
+      this.distance.traveled = 0
+      this.velocity.x = -this.velocity.x
+    }
+  }
+}
+
+class Particle {
+  constructor({ position, velocity, radius}) {
+    this.position = {
+      x: position.x,
+      y: position.y
+    }
+
+    this.velocity = {
+      x: velocity.x,
+      y: velocity.y
+    }
+
+    this.radius = 3
+    this.ttl = 300
+  }
+
+    draw() {
+      c.beginPath()
+      c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2, false)    
+      c.fillStyle = '#BDAB94'
+      c.fill()
+      c.closePath()
+    }
+
+
+  update() {
+    this.ttl--
+    this.draw()
+    this.position.x += this.velocity.x
+    this.position.y += this.velocity.y
+
+    if (this.position.y + this.radius + this.velocity.y <= canvas.height)
+    this.velocity.y += gravity * 0.1
   }
 }
 
@@ -199,7 +259,8 @@ function createImageAsync(imageSrc) {
 
 let bigPlatformLeftImage = createImage(bigPlatformLeft)
 let floatingPlatformImage = createImage(floatingPlatform)
-let floatingPlatform2Image = createImage(floatingPlatform2)
+let floatingPlatform2Image = createImageAsync(floatingPlatform2)
+let floatingPlatform3Image = createImage(floatingPlatform3)
 let bigplatformMiddleImage = createImage(bigPlatformMiddle)
 let bridgeImage = createImage(bridge)
 let crossImage1 = createImage(cross1)
@@ -215,6 +276,7 @@ let player = new Player()
 let platforms = []
 let genericObject = []
 let enemys = []
+let particles = []
 
 let lastKey
 const keys = {
@@ -228,6 +290,7 @@ const keys = {
 
 let scrollOffset = 0
 
+// character collision
 function isOnTopOfPlatform({object, platform }) {
   return (
     object.position.y + object.height <= platform.position.y +40
@@ -237,12 +300,23 @@ function isOnTopOfPlatform({object, platform }) {
   )
 }
 
+// enemy collision
 function collisionTop({object1, object2 }) {
   return (
-    object1.position.y + object1.height <= object2.position.y +40
-    && object1.position.y + object1.height + object1.velocity.y >= object2.position.y +40 
-    && object1.position.x + object1.width >= object2.position.x +30
-    && object1.position.x +30 <= object2.position.x + object2.width
+    object1.position.y + object1.height <= object2.position.y 
+    && object1.position.y + object1.height + object1.velocity.y >= object2.position.y  
+    && object1.position.x + object1.width >= object2.position.x 
+    && object1.position.x  <= object2.position.x + object2.width
+  )
+}
+
+// particle collision
+function isOnTopOfPlatformCircle({object, platform }) {
+  return (
+    object.position.y + object.radius <= platform.position.y +40
+    && object.position.y + object.radius + object.velocity.y >= platform.position.y +40 
+    && object.position.x + object.radius >= platform.position.x 
+    && object.position.x  <= platform.position.x + platform.width
   )
 }
 
@@ -250,6 +324,7 @@ async function init() {
 
   floatingPlatformImage = await createImageAsync(floatingPlatform)
   floatingPlatform2Image = await createImageAsync(floatingPlatform2)
+  floatingPlatform3Image = await createImageAsync(floatingPlatform3)
   bigPlatformLeftImage = await createImageAsync(bigPlatformLeft)
   bigplatformMiddleImage = await createImageAsync(bigPlatformMiddle)
   bridgeImage = await createImageAsync(bridge)
@@ -264,17 +339,27 @@ async function init() {
   pillarImage = await createImageAsync(pillar)
 
   player = new Player()
-  
+
+  // all enemy placement
   enemys = [
     new Enemy({
       position: {
-        x: 800, 
-        y: 100}, 
+        x: 1200, 
+        y: 100
+      }, 
       velocity: { 
         x: -.3, 
-        y: 0, } 
+        y: 0, 
+      },
+      distance: {
+        limit: 200,
+        traveled: 0
+      }
     })
   ]
+
+  // particle placement
+  particles = []
 
   // all platforms
   platforms = [
@@ -306,10 +391,11 @@ async function init() {
     
     //floating Platforms 
     new Platform({ 
-      x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width , 
+      x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width -20 , 
       y: 265, 
       image: floatingPlatformImage}),
-    new Platform({ x: 2100, y: 330, image: floatingPlatform2Image}),
+    new Platform({ x: 2100, y: 330, image: floatingPlatform3Image}),
+
 
 
     new Platform({ x: 20, y: 35, image: treeImage}),
@@ -379,22 +465,45 @@ function animate() {
   enemys.forEach((enemy, index) => {
     enemy.update()
 
-    if (collisionTop({
+    // enemy stomp
+    if (
+      collisionTop({
       object1: player,
       object2: enemy
       })
     ) {
-      player.velocity.y -= 40
-      setTimeout(() => {  
-        enemys.splice(index, 1)
-      }, 0)
-    }
+        for (let i = 0; i < 50; i++) {
+          particles.push( 
+            new Particle({
+              position: {
+                x: enemy.position.x + enemy.width / 2,
+                y: enemy.position.y + enemy.width / 2
+              },
+              velocity: {
+                x: (Math.random() - 0.5) * 2,
+                y: Math.random() - 0.5 * 2
+              }, 
+              radius: Math.random() * 3
+            })
+          )
+        }
+        player.velocity.y -= 30
+        setTimeout(() => {  
+          enemys.splice(index, 1)      
+        }, 0)
+      } else if (
+        player.position.x + player.width >= enemy.position.x && 
+        player.position.y + player.height >= enemy.position.y && 
+        player.position.x <= enemy.position.x + enemy.width
+      )
+      init()
+        
   })
 
-
-
+  particles.forEach((particle) => {
+    particle.update()
+  })
   player.update()
-
 
   // Player movement left & right
   if (keys.right.pressed && player.position.x < 200) {
@@ -417,6 +526,9 @@ function animate() {
     enemys.forEach((enemy) => {
       enemy.position.x -= player.speed
     })
+    particles.forEach((particle) => {
+      particle.position.x -= player.speed
+    })
   } else if (keys.left.pressed && scrollOffset > 0) {
     scrollOffset -= player.speed
       platforms.forEach((platform) => {
@@ -427,6 +539,9 @@ function animate() {
       })
       enemys.forEach((enemy) => {
         enemy.position.x += player.speed
+      })
+      particles.forEach((particle) => {
+        particle.position.x += player.speed
       })
     }
   }
@@ -443,6 +558,25 @@ function animate() {
       player.velocity.y = 0
     }
 
+    // particles bounce
+    particles.forEach((particle, index) => {
+      if (
+        isOnTopOfPlatformCircle({
+          object: particle,
+          platform
+      })
+      ) {
+        particle.velocity.y = -particle.velocity.y * .5
+
+        if (particle.radius - 0.4 < 0) 
+          particles.splice(index,1)
+        else particle.radius -= 0.4
+      }
+      if (particle.ttl < 0) 
+        particles.splice(index,1)
+
+    })
+
     enemys.forEach(enemy => {
       if ( isOnTopOfPlatform({
         object: enemy,
@@ -453,23 +587,26 @@ function animate() {
     })
   })
 
-  if (keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.run.right) {
-    player.frames = 1 
-    player.currentSprite = player.sprites.run.right
-    player.currentCropWidth = player.sprites.run.cropWidth
-    player.width = player.sprites.run.width
-  } else if (keys.left.pressed && lastKey === 'left' && player.currentSprite !== player.sprites.run.left){
-    player.currentSprite = player.sprites.run.left
-    player.currentCropWidth = player.sprites.run.cropWidth
-    player.width = player.sprites.run.width
-  } else if (!keys.left.pressed && lastKey === 'left' && player.currentSprite !== player.sprites.stand.left){
-    player.currentSprite = player.sprites.stand.left
-    player.currentCropWidth = player.sprites.stand.cropWidth
-    player.width = player.sprites.stand.width
-  } else if (!keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.stand.right){
-    player.currentSprite = player.sprites.stand.right
-    player.currentCropWidth = player.sprites.stand.cropWidth
-    player.width = player.sprites.stand.width
+  // sprite switching
+  if (player.velocity.y === 0){
+    if (keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.run.right) {
+      player.frames = 1 
+      player.currentSprite = player.sprites.run.right
+      player.currentCropWidth = player.sprites.run.cropWidth
+      player.width = player.sprites.run.width
+    } else if (keys.left.pressed && lastKey === 'left' && player.currentSprite !== player.sprites.run.left){
+      player.currentSprite = player.sprites.run.left
+      player.currentCropWidth = player.sprites.run.cropWidth
+      player.width = player.sprites.run.width
+    } else if (!keys.left.pressed && lastKey === 'left' && player.currentSprite !== player.sprites.stand.left){
+      player.currentSprite = player.sprites.stand.left
+      player.currentCropWidth = player.sprites.stand.cropWidth
+      player.width = player.sprites.stand.width
+    } else if (!keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.stand.right){
+      player.currentSprite = player.sprites.stand.right
+      player.currentCropWidth = player.sprites.stand.cropWidth
+      player.width = player.sprites.stand.width
+    }
   }
 
 
@@ -511,7 +648,12 @@ window.addEventListener('keydown', ({ keyCode }) => {
   // Action for "W" key
     case 87: 
       console.log('up');
-      player.velocity.y -= 19
+      if (player.velocity.y === 0) 
+      player.velocity.y = -20
+      if (lastKey === 'right')
+        player.currentSprite = player.sprites.jump.right
+      else
+        player.currentSprite = player.sprites.jump.left
       break
   }
 });

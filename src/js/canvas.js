@@ -1,7 +1,14 @@
 // Platform import assets
-
+import {
+  isOnTopOfPlatform, 
+  collisionTop, 
+  isOnTopOfPlatformCircle, 
+  createImage, 
+  createImageAsync,
+  hitBottomOfPlatform,
+  hitSideOfPlatform } from './utils.js'
 import floatingPlatform from '../img/floatingPlatform.png'
-import floatingPlatform2 from '../img/floatingPlatform2.png'
+import block from '../img/floatingPlatform2.png'
 import floatingPlatform3 from '../img/floatingPlatform3.png'
 
 import bigPlatformLeft from '../img/bigPlatformLeft.png'
@@ -109,7 +116,7 @@ class Player {
 }
 
 class Platform {
-  constructor({ x, y, image }) {
+  constructor({ x, y, image, block }) {
     this.position = {
       x,
       y 
@@ -118,7 +125,7 @@ class Platform {
     this.image = image
     this.width = image.width
     this.height = image.height
-
+    this.block = block
   }
 
   draw() {
@@ -240,36 +247,19 @@ class Particle {
   }
 }
 
-function createImage(imageSrc) {
-  const image = new Image()
-  image.src = imageSrc
-  return image
-}
-
-function createImageAsync(imageSrc) {
-  return new Promise ((resolve) => {
-    const image = new Image()
-    image.onload = () => {
-      resolve(image)
-    }
-    image.src = imageSrc
-  })
-}
-
-
-let bigPlatformLeftImage = createImage(bigPlatformLeft)
-let floatingPlatformImage = createImage(floatingPlatform)
-let floatingPlatform2Image = createImageAsync(floatingPlatform2)
-let floatingPlatform3Image = createImage(floatingPlatform3)
-let bigplatformMiddleImage = createImage(bigPlatformMiddle)
-let bridgeImage = createImage(bridge)
-let crossImage1 = createImage(cross1)
-let backgroundImage = createImage(background)
-let seaImage = createImage(sea)
-let cloudImage = createImage(clouds)
-let landImage = createImage(land)
-let treeImage = createImage(tree)
-let pillarImage = createImage(pillar)
+let bigPlatformLeftImage 
+let floatingPlatformImage 
+let blockImage 
+let floatingPlatform3Image 
+let bigplatformMiddleImage 
+let bridgeImage 
+let crossImage1 
+let backgroundImage 
+let seaImage 
+let cloudImage 
+let landImage 
+let treeImage 
+let pillarImage 
 
 
 let player = new Player()
@@ -290,40 +280,11 @@ const keys = {
 
 let scrollOffset = 0
 
-// character collision
-function isOnTopOfPlatform({object, platform }) {
-  return (
-    object.position.y + object.height <= platform.position.y +40
-    && object.position.y + object.height + object.velocity.y >= platform.position.y +40 
-    && object.position.x + object.width >= platform.position.x 
-    && object.position.x  <= platform.position.x + platform.width
-  )
-}
-
-// enemy collision
-function collisionTop({object1, object2 }) {
-  return (
-    object1.position.y + object1.height <= object2.position.y 
-    && object1.position.y + object1.height + object1.velocity.y >= object2.position.y  
-    && object1.position.x + object1.width >= object2.position.x 
-    && object1.position.x  <= object2.position.x + object2.width
-  )
-}
-
-// particle collision
-function isOnTopOfPlatformCircle({object, platform }) {
-  return (
-    object.position.y + object.radius <= platform.position.y +40
-    && object.position.y + object.radius + object.velocity.y >= platform.position.y +40 
-    && object.position.x + object.radius >= platform.position.x 
-    && object.position.x  <= platform.position.x + platform.width
-  )
-}
 
 async function init() {
 
   floatingPlatformImage = await createImageAsync(floatingPlatform)
-  floatingPlatform2Image = await createImageAsync(floatingPlatform2)
+  blockImage = await createImageAsync(block)
   floatingPlatform3Image = await createImageAsync(floatingPlatform3)
   bigPlatformLeftImage = await createImageAsync(bigPlatformLeft)
   bigplatformMiddleImage = await createImageAsync(bigPlatformMiddle)
@@ -390,6 +351,12 @@ async function init() {
     
     
     //floating Platforms 
+    new Platform({
+      x: 800,
+      y: 180,
+      image: blockImage,
+      block: true
+    }),
     new Platform({ 
       x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width -20 , 
       y: 265, 
@@ -397,7 +364,7 @@ async function init() {
     new Platform({ x: 2100, y: 330, image: floatingPlatform3Image}),
 
 
-
+    // visual aid
     new Platform({ x: 20, y: 35, image: treeImage}),
     new Platform({x: 200, y: 315, image: crossImage1}),
 
@@ -556,6 +523,22 @@ function animate() {
     })
     ) {
       player.velocity.y = 0
+    }
+
+    if (platform.block && hitBottomOfPlatform({
+      object: player, 
+      platform
+    })) {
+      player.velocity.y = - player.velocity.y 
+    }
+
+    if (
+      platform.block && hitSideOfPlatform({
+        object: player,
+        platform
+      })
+    ) {
+      player.velocity.x = 0
     }
 
     // particles bounce

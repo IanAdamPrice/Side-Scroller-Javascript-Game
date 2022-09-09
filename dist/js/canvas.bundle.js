@@ -881,32 +881,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/floatingPlatform.png */ "./src/img/floatingPlatform.png");
-/* harmony import */ var _img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/floatingPlatform2.png */ "./src/img/floatingPlatform2.png");
-/* harmony import */ var _img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/floatingPlatform3.png */ "./src/img/floatingPlatform3.png");
-/* harmony import */ var _img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/bigPlatformLeft.png */ "./src/img/bigPlatformLeft.png");
-/* harmony import */ var _img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/bigPlatformMiddle.png */ "./src/img/bigPlatformMiddle.png");
-/* harmony import */ var _img_bridge_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/bridge.png */ "./src/img/bridge.png");
-/* harmony import */ var _img_cross1_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/cross1.png */ "./src/img/cross1.png");
-/* harmony import */ var _img_clouds_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/clouds.png */ "./src/img/clouds.png");
-/* harmony import */ var _img_sky_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../img/sky.png */ "./src/img/sky.png");
-/* harmony import */ var _img_pillar_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/pillar.png */ "./src/img/pillar.png");
-/* harmony import */ var _img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/spriteRunLeft.png */ "./src/img/spriteRunLeft.png");
-/* harmony import */ var _img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/spriteRunRight.png */ "./src/img/spriteRunRight.png");
-/* harmony import */ var _img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/spriteStandLeft.png */ "./src/img/spriteStandLeft.png");
-/* harmony import */ var _img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../img/spriteStandRight.png */ "./src/img/spriteStandRight.png");
-/* harmony import */ var _img_jumpRight_png__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../img/jumpRight.png */ "./src/img/jumpRight.png");
-/* harmony import */ var _img_jumpLeft_png__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../img/jumpLeft.png */ "./src/img/jumpLeft.png");
-/* harmony import */ var _img_enemyWalkRight_png__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../img/enemyWalkRight.png */ "./src/img/enemyWalkRight.png");
-/* harmony import */ var _img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../img/enemyWalkLeft.png */ "./src/img/enemyWalkLeft.png");
-/* harmony import */ var _img_sea_png__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../img/sea.png */ "./src/img/sea.png");
-/* harmony import */ var _img_far_grounds_png__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../img/far-grounds.png */ "./src/img/far-grounds.png");
-/* harmony import */ var _img_tree_png__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../img/tree.png */ "./src/img/tree.png");
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils.js */ "./src/js/utils.js");
+/* harmony import */ var _img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/floatingPlatform.png */ "./src/img/floatingPlatform.png");
+/* harmony import */ var _img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/floatingPlatform2.png */ "./src/img/floatingPlatform2.png");
+/* harmony import */ var _img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/floatingPlatform3.png */ "./src/img/floatingPlatform3.png");
+/* harmony import */ var _img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/bigPlatformLeft.png */ "./src/img/bigPlatformLeft.png");
+/* harmony import */ var _img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/bigPlatformMiddle.png */ "./src/img/bigPlatformMiddle.png");
+/* harmony import */ var _img_bridge_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/bridge.png */ "./src/img/bridge.png");
+/* harmony import */ var _img_cross1_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/cross1.png */ "./src/img/cross1.png");
+/* harmony import */ var _img_clouds_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../img/clouds.png */ "./src/img/clouds.png");
+/* harmony import */ var _img_sky_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/sky.png */ "./src/img/sky.png");
+/* harmony import */ var _img_pillar_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/pillar.png */ "./src/img/pillar.png");
+/* harmony import */ var _img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/spriteRunLeft.png */ "./src/img/spriteRunLeft.png");
+/* harmony import */ var _img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/spriteRunRight.png */ "./src/img/spriteRunRight.png");
+/* harmony import */ var _img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../img/spriteStandLeft.png */ "./src/img/spriteStandLeft.png");
+/* harmony import */ var _img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../img/spriteStandRight.png */ "./src/img/spriteStandRight.png");
+/* harmony import */ var _img_jumpRight_png__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../img/jumpRight.png */ "./src/img/jumpRight.png");
+/* harmony import */ var _img_jumpLeft_png__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../img/jumpLeft.png */ "./src/img/jumpLeft.png");
+/* harmony import */ var _img_enemyWalkRight_png__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../img/enemyWalkRight.png */ "./src/img/enemyWalkRight.png");
+/* harmony import */ var _img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../img/enemyWalkLeft.png */ "./src/img/enemyWalkLeft.png");
+/* harmony import */ var _img_sea_png__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../img/sea.png */ "./src/img/sea.png");
+/* harmony import */ var _img_far_grounds_png__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../img/far-grounds.png */ "./src/img/far-grounds.png");
+/* harmony import */ var _img_tree_png__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../img/tree.png */ "./src/img/tree.png");
 
 
 
 
 // Platform import assets
+
 
 
 
@@ -949,24 +951,24 @@ var Player = /*#__PURE__*/function () {
     };
     this.width = 54;
     this.height = 70;
-    this.image = createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_17__["default"]);
+    this.image = Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImage"])(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_18__["default"]);
     this.frames = 0;
     this.sprites = {
       stand: {
-        right: createImage(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_17__["default"]),
-        left: createImage(_img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_16__["default"]),
+        right: Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImage"])(_img_spriteStandRight_png__WEBPACK_IMPORTED_MODULE_18__["default"]),
+        left: Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImage"])(_img_spriteStandLeft_png__WEBPACK_IMPORTED_MODULE_17__["default"]),
         cropWidth: 54,
         width: 54
       },
       run: {
-        right: createImage(_img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_15__["default"]),
-        left: createImage(_img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_14__["default"]),
+        right: Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImage"])(_img_spriteRunRight_png__WEBPACK_IMPORTED_MODULE_16__["default"]),
+        left: Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImage"])(_img_spriteRunLeft_png__WEBPACK_IMPORTED_MODULE_15__["default"]),
         cropWidth: 68,
         width: 68
       },
       jump: {
-        right: createImage(_img_jumpRight_png__WEBPACK_IMPORTED_MODULE_18__["default"]),
-        left: createImage(_img_jumpLeft_png__WEBPACK_IMPORTED_MODULE_19__["default"]),
+        right: Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImage"])(_img_jumpRight_png__WEBPACK_IMPORTED_MODULE_19__["default"]),
+        left: Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImage"])(_img_jumpLeft_png__WEBPACK_IMPORTED_MODULE_20__["default"]),
         cropWidth: 49,
         width: 50
       }
@@ -999,7 +1001,8 @@ var Platform = /*#__PURE__*/function () {
   function Platform(_ref) {
     var x = _ref.x,
         y = _ref.y,
-        image = _ref.image;
+        image = _ref.image,
+        block = _ref.block;
 
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Platform);
 
@@ -1010,6 +1013,7 @@ var Platform = /*#__PURE__*/function () {
     this.image = image;
     this.width = image.width;
     this.height = image.height;
+    this.block = block;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Platform, [{
@@ -1071,7 +1075,7 @@ var Enemy = /*#__PURE__*/function () {
     };
     this.width = 46;
     this.height = 74;
-    this.image = createImage(_img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_21__["default"]);
+    this.image = Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImage"])(_img_enemyWalkLeft_png__WEBPACK_IMPORTED_MODULE_22__["default"]);
     this.frames = 0;
     this.distance = distance;
   }
@@ -1148,37 +1152,19 @@ var Particle = /*#__PURE__*/function () {
   return Particle;
 }();
 
-function createImage(imageSrc) {
-  var image = new Image();
-  image.src = imageSrc;
-  return image;
-}
-
-function createImageAsync(imageSrc) {
-  return new Promise(function (resolve) {
-    var image = new Image();
-
-    image.onload = function () {
-      resolve(image);
-    };
-
-    image.src = imageSrc;
-  });
-}
-
-var bigPlatformLeftImage = createImage(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
-var floatingPlatformImage = createImage(_img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
-var floatingPlatform2Image = createImageAsync(_img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
-var floatingPlatform3Image = createImage(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
-var bigplatformMiddleImage = createImage(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
-var bridgeImage = createImage(_img_bridge_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
-var crossImage1 = createImage(_img_cross1_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
-var backgroundImage = createImage(_img_sky_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
-var seaImage = createImage(_img_sea_png__WEBPACK_IMPORTED_MODULE_22__["default"]);
-var cloudImage = createImage(_img_clouds_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
-var landImage = createImage(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_23__["default"]);
-var treeImage = createImage(_img_tree_png__WEBPACK_IMPORTED_MODULE_24__["default"]);
-var pillarImage = createImage(_img_pillar_png__WEBPACK_IMPORTED_MODULE_13__["default"]);
+var bigPlatformLeftImage;
+var floatingPlatformImage;
+var blockImage;
+var floatingPlatform3Image;
+var bigplatformMiddleImage;
+var bridgeImage;
+var crossImage1;
+var backgroundImage;
+var seaImage;
+var cloudImage;
+var landImage;
+var treeImage;
+var pillarImage;
 var player = new Player();
 var platforms = [];
 var genericObject = [];
@@ -1193,27 +1179,7 @@ var keys = {
     pressed: false
   }
 };
-var scrollOffset = 0; // character collision
-
-function isOnTopOfPlatform(_ref5) {
-  var object = _ref5.object,
-      platform = _ref5.platform;
-  return object.position.y + object.height <= platform.position.y + 40 && object.position.y + object.height + object.velocity.y >= platform.position.y + 40 && object.position.x + object.width >= platform.position.x && object.position.x <= platform.position.x + platform.width;
-} // enemy collision
-
-
-function collisionTop(_ref6) {
-  var object1 = _ref6.object1,
-      object2 = _ref6.object2;
-  return object1.position.y + object1.height <= object2.position.y && object1.position.y + object1.height + object1.velocity.y >= object2.position.y && object1.position.x + object1.width >= object2.position.x && object1.position.x <= object2.position.x + object2.width;
-} // particle collision
-
-
-function isOnTopOfPlatformCircle(_ref7) {
-  var object = _ref7.object,
-      platform = _ref7.platform;
-  return object.position.y + object.radius <= platform.position.y + 40 && object.position.y + object.radius + object.velocity.y >= platform.position.y + 40 && object.position.x + object.radius >= platform.position.x && object.position.x <= platform.position.x + platform.width;
-}
+var scrollOffset = 0;
 
 function init() {
   return _init.apply(this, arguments);
@@ -1227,67 +1193,67 @@ function _init() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return createImageAsync(_img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_floatingPlatform_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
           case 2:
             floatingPlatformImage = _context.sent;
             _context.next = 5;
-            return createImageAsync(_img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_floatingPlatform2_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
 
           case 5:
-            floatingPlatform2Image = _context.sent;
+            blockImage = _context.sent;
             _context.next = 8;
-            return createImageAsync(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_floatingPlatform3_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
 
           case 8:
             floatingPlatform3Image = _context.sent;
             _context.next = 11;
-            return createImageAsync(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_7__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_bigPlatformLeft_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
 
           case 11:
             bigPlatformLeftImage = _context.sent;
             _context.next = 14;
-            return createImageAsync(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_8__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_bigPlatformMiddle_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
 
           case 14:
             bigplatformMiddleImage = _context.sent;
             _context.next = 17;
-            return createImageAsync(_img_bridge_png__WEBPACK_IMPORTED_MODULE_9__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_bridge_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
 
           case 17:
             bridgeImage = _context.sent;
             _context.next = 20;
-            return createImageAsync(_img_cross1_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_cross1_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
 
           case 20:
             crossImage1 = _context.sent;
             _context.next = 23;
-            return createImageAsync(_img_sky_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_sky_png__WEBPACK_IMPORTED_MODULE_13__["default"]);
 
           case 23:
             backgroundImage = _context.sent;
             _context.next = 26;
-            return createImageAsync(_img_clouds_png__WEBPACK_IMPORTED_MODULE_11__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_clouds_png__WEBPACK_IMPORTED_MODULE_12__["default"]);
 
           case 26:
             cloudImage = _context.sent;
             _context.next = 29;
-            return createImageAsync(_img_sea_png__WEBPACK_IMPORTED_MODULE_22__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_sea_png__WEBPACK_IMPORTED_MODULE_23__["default"]);
 
           case 29:
             seaImage = _context.sent;
             _context.next = 32;
-            return createImageAsync(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_23__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_far_grounds_png__WEBPACK_IMPORTED_MODULE_24__["default"]);
 
           case 32:
             landImage = _context.sent;
             _context.next = 35;
-            return createImageAsync(_img_tree_png__WEBPACK_IMPORTED_MODULE_24__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_tree_png__WEBPACK_IMPORTED_MODULE_25__["default"]);
 
           case 35:
             treeImage = _context.sent;
             _context.next = 38;
-            return createImageAsync(_img_pillar_png__WEBPACK_IMPORTED_MODULE_13__["default"]);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["createImageAsync"])(_img_pillar_png__WEBPACK_IMPORTED_MODULE_14__["default"]);
 
           case 38:
             pillarImage = _context.sent;
@@ -1329,6 +1295,11 @@ function _init() {
               image: bridgeImage
             }), //floating Platforms 
             new Platform({
+              x: 800,
+              y: 180,
+              image: blockImage,
+              block: true
+            }), new Platform({
               x: bigPlatformLeftImage.width + bridgeImage.width + bigplatformMiddleImage.width - 20,
               y: 265,
               image: floatingPlatformImage
@@ -1336,7 +1307,8 @@ function _init() {
               x: 2100,
               y: 330,
               image: floatingPlatform3Image
-            }), new Platform({
+            }), // visual aid
+            new Platform({
               x: 20,
               y: 35,
               image: treeImage
@@ -1488,7 +1460,7 @@ function animate() {
   enemys.forEach(function (enemy, index) {
     enemy.update(); // enemy stomp
 
-    if (collisionTop({
+    if (Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["collisionTop"])({
       object1: player,
       object2: enemy
     })) {
@@ -1557,16 +1529,30 @@ function animate() {
 
 
   platforms.forEach(function (platform) {
-    if (isOnTopOfPlatform({
+    if (Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["isOnTopOfPlatform"])({
       object: player,
       platform: platform
     })) {
       player.velocity.y = 0;
+    }
+
+    if (platform.block && Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["hitBottomOfPlatform"])({
+      object: player,
+      platform: platform
+    })) {
+      player.velocity.y = -player.velocity.y;
+    }
+
+    if (platform.block && Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["hitSideOfPlatform"])({
+      object: player,
+      platform: platform
+    })) {
+      player.velocity.x = 0;
     } // particles bounce
 
 
     particles.forEach(function (particle, index) {
-      if (isOnTopOfPlatformCircle({
+      if (Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["isOnTopOfPlatformCircle"])({
         object: particle,
         platform: platform
       })) {
@@ -1577,7 +1563,7 @@ function animate() {
       if (particle.ttl < 0) particles.splice(index, 1);
     });
     enemys.forEach(function (enemy) {
-      if (isOnTopOfPlatform({
+      if (Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["isOnTopOfPlatform"])({
         object: enemy,
         platform: platform
       })) enemy.velocity.y = 0;
@@ -1618,8 +1604,8 @@ function animate() {
 init();
 animate(); // Event listener for movement
 
-window.addEventListener('keydown', function (_ref8) {
-  var keyCode = _ref8.keyCode;
+window.addEventListener('keydown', function (_ref5) {
+  var keyCode = _ref5.keyCode;
 
   // Action for "A" key
   switch (keyCode) {
@@ -1649,8 +1635,8 @@ window.addEventListener('keydown', function (_ref8) {
       break;
   }
 });
-window.addEventListener('keyup', function (_ref9) {
-  var keyCode = _ref9.keyCode;
+window.addEventListener('keyup', function (_ref6) {
+  var keyCode = _ref6.keyCode;
 
   // Action for "A" key
   switch (keyCode) {
@@ -1676,6 +1662,83 @@ window.addEventListener('keyup', function (_ref9) {
       break;
   }
 });
+
+/***/ }),
+
+/***/ "./src/js/utils.js":
+/*!*************************!*\
+  !*** ./src/js/utils.js ***!
+  \*************************/
+/*! exports provided: createImage, createImageAsync, isOnTopOfPlatform, collisionTop, isOnTopOfPlatformCircle, hitBottomOfPlatform, hitSideOfPlatform */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createImage", function() { return createImage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createImageAsync", function() { return createImageAsync; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isOnTopOfPlatform", function() { return isOnTopOfPlatform; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "collisionTop", function() { return collisionTop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isOnTopOfPlatformCircle", function() { return isOnTopOfPlatformCircle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hitBottomOfPlatform", function() { return hitBottomOfPlatform; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hitSideOfPlatform", function() { return hitSideOfPlatform; });
+function randomIntFromRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function randomColor(colors) {
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function distance(x1, y1, x2, y2) {
+  var xDist = x2 - x1;
+  var yDist = y2 - y1;
+  return Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+}
+
+function createImage(imageSrc) {
+  var image = new Image();
+  image.src = imageSrc;
+  return image;
+}
+function createImageAsync(imageSrc) {
+  return new Promise(function (resolve) {
+    var image = new Image();
+
+    image.onload = function () {
+      resolve(image);
+    };
+
+    image.src = imageSrc;
+  });
+} // character collision
+
+function isOnTopOfPlatform(_ref) {
+  var object = _ref.object,
+      platform = _ref.platform;
+  return object.position.y + object.height <= platform.position.y + 40 && object.position.y + object.height + object.velocity.y >= platform.position.y + 40 && object.position.x + object.width >= platform.position.x && object.position.x <= platform.position.x + platform.width;
+} // enemy collision
+
+function collisionTop(_ref2) {
+  var object1 = _ref2.object1,
+      object2 = _ref2.object2;
+  return object1.position.y + object1.height <= object2.position.y && object1.position.y + object1.height + object1.velocity.y >= object2.position.y && object1.position.x + object1.width >= object2.position.x && object1.position.x <= object2.position.x + object2.width;
+} // particle collision
+
+function isOnTopOfPlatformCircle(_ref3) {
+  var object = _ref3.object,
+      platform = _ref3.platform;
+  return object.position.y + object.radius <= platform.position.y + 40 && object.position.y + object.radius + object.velocity.y >= platform.position.y + 40 && object.position.x + object.radius >= platform.position.x && object.position.x <= platform.position.x + platform.width;
+}
+function hitBottomOfPlatform(_ref4) {
+  var object = _ref4.object,
+      platform = _ref4.platform;
+  return object.position.y <= platform.position.y + platform.height && object.position.y - object.velocity.y >= platform.position.y + platform.height && object.position.x + object.width >= platform.position.x && object.position.x <= platform.position.x + platform.width;
+}
+function hitSideOfPlatform(_ref5) {
+  var object = _ref5.object,
+      platform = _ref5.platform;
+  return object.position.x + object.width + object.velocity.x - platform.velocity.x >= platform.position.x && object.position.x + object.velocity.x <= platform.position.x + platform.width && object.position.y <= platform.position.y + platform.height && object.position.y + object.height >= platform.position.y;
+}
 
 /***/ })
 

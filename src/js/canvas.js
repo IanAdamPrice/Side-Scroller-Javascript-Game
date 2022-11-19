@@ -122,6 +122,10 @@ class Platform {
       y 
     }
 
+    this.velocity ={
+      x: 0
+    }
+
     this.image = image
     this.width = image.width
     this.height = image.height
@@ -130,6 +134,11 @@ class Platform {
 
   draw() {
     c.drawImage(this.image, this.position.x, this.position.y)
+  }
+
+  update() {
+    this.draw()
+    this.position.x += this.velocity.x
   }
 }
 
@@ -140,6 +149,10 @@ class GenericObject {
       y 
     }
 
+    this.velocity ={
+      x: 0
+    }
+
     this.image = image
     this.width = image.width
     this.height = image.height
@@ -148,6 +161,11 @@ class GenericObject {
 
   draw() {
     c.drawImage(this.image, this.position.x, this.position.y)
+  }
+
+  update() {
+    this.draw()
+    this.position.x += this.velocity.x
   }
 }
 
@@ -334,7 +352,8 @@ async function init() {
     new Platform({
       x: 0, 
       y: 315, 
-      image: bigPlatformLeftImage
+      image: bigPlatformLeftImage,
+
     }),
 
     new Platform({
@@ -422,11 +441,13 @@ function animate() {
   c.fillRect(0, 0, canvas.width, canvas.height)
   
   genericObject.forEach(genericObject => {
-    genericObject.draw()
+    genericObject.update()
+    genericObject.velocity.x = 0
   })
 
   platforms.forEach((platform) => {
-    platform.draw()
+    platform.update()
+    platform.velocity.x = 0
   })
 
   enemys.forEach((enemy, index) => {
@@ -472,44 +493,88 @@ function animate() {
   })
   player.update()
 
+  let hitSide = false
+
   // Player movement left & right
   if (keys.right.pressed && player.position.x < 200) {
     player.velocity.x = player.speed
   } else if ((keys.left.pressed && player.position.x > 400)
-    || keys.left.pressed && scrollOffset === 0 && player.position.x > 0) {
+    || (keys.left.pressed && scrollOffset === 0 && player.position.x > 0)) {
     player.velocity.x = -player.speed
   } else {
     player.velocity.x =0
 
   // Background scrolling
   if (keys.right.pressed) {
-    scrollOffset += player.speed
-    platforms.forEach((platform) => {
-      platform.position.x -= player.speed
-    })
-    genericObject.forEach(genericObject => {
-      genericObject.position.x -= player.speed *.50
-    })
-    enemys.forEach((enemy) => {
-      enemy.position.x -= player.speed
-    })
-    particles.forEach((particle) => {
-      particle.position.x -= player.speed
-    })
+    for (let i = 0; i < platforms.length; i++) {
+      const platform = platforms[i]
+      platform.velocity.x = -player.speed
+
+      if (
+        platform.block &&
+        hitSideOfPlatform({
+          object: player,
+          platform
+        })
+      ) {
+        platforms.forEach((platform) => {
+          platform.velocity.x = 0
+        })
+        hitSide = true
+        break
+      }
+    }
+
+    if (!hitSide) {
+      scrollOffset += player.speed
+
+      genericObject.forEach((genericObject) => {
+        genericObject.velocity.x = -player.speed * 0.66
+      })
+
+      enemys.forEach((enemy) => {
+        enemy.position.x -= player.speed
+      })
+
+      particles.forEach((particle) => {
+        particle.position.x -= player.speed
+      })
+    }
   } else if (keys.left.pressed && scrollOffset > 0) {
-    scrollOffset -= player.speed
-      platforms.forEach((platform) => {
-        platform.position.x += player.speed
+    for (let i = 0; i < platforms.length; i++) {
+      const platform = platforms[i]
+      platform.velocity.x = player.speed
+
+      if (
+        platform.block && 
+        hitSideOfPlatform({
+          object: player,
+          platform
+        })
+      ) {
+        platforms.forEach((platform) => {
+          platform.velocity.x = 0
+        })
+
+        hitSide = true
+        break
+      }
+    }
+    if (!hitSide) {
+      scrollOffset -= player.speed
+      
+      genericObject.forEach((genericObject) => {
+        genericObject.velocity.x = player.speed * 0.66
       })
-      genericObject.forEach(genericObject => {
-        genericObject.position.x += player.speed *.50
-      })
+
       enemys.forEach((enemy) => {
         enemy.position.x += player.speed
       })
+
       particles.forEach((particle) => {
         particle.position.x += player.speed
       })
+    }
     }
   }
 
@@ -529,7 +594,7 @@ function animate() {
       object: player, 
       platform
     })) {
-      player.velocity.y = - player.velocity.y 
+      player.velocity.y = -player.velocity.y 
     }
 
     if (

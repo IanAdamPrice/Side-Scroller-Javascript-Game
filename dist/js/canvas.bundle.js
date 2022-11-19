@@ -1010,6 +1010,9 @@ var Platform = /*#__PURE__*/function () {
       x: x,
       y: y
     };
+    this.velocity = {
+      x: 0
+    };
     this.image = image;
     this.width = image.width;
     this.height = image.height;
@@ -1020,6 +1023,12 @@ var Platform = /*#__PURE__*/function () {
     key: "draw",
     value: function draw() {
       c.drawImage(this.image, this.position.x, this.position.y);
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.draw();
+      this.position.x += this.velocity.x;
     }
   }]);
 
@@ -1038,6 +1047,9 @@ var GenericObject = /*#__PURE__*/function () {
       x: x,
       y: y
     };
+    this.velocity = {
+      x: 0
+    };
     this.image = image;
     this.width = image.width;
     this.height = image.height;
@@ -1047,6 +1059,12 @@ var GenericObject = /*#__PURE__*/function () {
     key: "draw",
     value: function draw() {
       c.drawImage(this.image, this.position.x, this.position.y);
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.draw();
+      this.position.x += this.velocity.x;
     }
   }]);
 
@@ -1452,10 +1470,12 @@ function animate() {
   c.fillStyle = 'white';
   c.fillRect(0, 0, canvas.width, canvas.height);
   genericObject.forEach(function (genericObject) {
-    genericObject.draw();
+    genericObject.update();
+    genericObject.velocity.x = 0;
   });
   platforms.forEach(function (platform) {
-    platform.draw();
+    platform.update();
+    platform.velocity.x = 0;
   });
   enemys.forEach(function (enemy, index) {
     enemy.update(); // enemy stomp
@@ -1487,7 +1507,8 @@ function animate() {
   particles.forEach(function (particle) {
     particle.update();
   });
-  player.update(); // Player movement left & right
+  player.update();
+  var hitSide = false; // Player movement left & right
 
   if (keys.right.pressed && player.position.x < 200) {
     player.velocity.x = player.speed;
@@ -1497,33 +1518,63 @@ function animate() {
     player.velocity.x = 0; // Background scrolling
 
     if (keys.right.pressed) {
-      scrollOffset += player.speed;
-      platforms.forEach(function (platform) {
-        platform.position.x -= player.speed;
-      });
-      genericObject.forEach(function (genericObject) {
-        genericObject.position.x -= player.speed * .50;
-      });
-      enemys.forEach(function (enemy) {
-        enemy.position.x -= player.speed;
-      });
-      particles.forEach(function (particle) {
-        particle.position.x -= player.speed;
-      });
+      for (var i = 0; i < platforms.length; i++) {
+        var platform = platforms[i];
+        platform.velocity.x = -player.speed;
+
+        if (platform.block && Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["hitSideOfPlatform"])({
+          object: player,
+          platform: platform
+        })) {
+          platforms.forEach(function (platform) {
+            platform.velocity.x = 0;
+          });
+          hitSide = true;
+          break;
+        }
+      }
+
+      if (!hitSide) {
+        scrollOffset += player.speed;
+        genericObject.forEach(function (genericObject) {
+          genericObject.velocity.x = -player.speed * 0.66;
+        });
+        enemys.forEach(function (enemy) {
+          enemy.position.x -= player.speed;
+        });
+        particles.forEach(function (particle) {
+          particle.position.x -= player.speed;
+        });
+      }
     } else if (keys.left.pressed && scrollOffset > 0) {
-      scrollOffset -= player.speed;
-      platforms.forEach(function (platform) {
-        platform.position.x += player.speed;
-      });
-      genericObject.forEach(function (genericObject) {
-        genericObject.position.x += player.speed * .50;
-      });
-      enemys.forEach(function (enemy) {
-        enemy.position.x += player.speed;
-      });
-      particles.forEach(function (particle) {
-        particle.position.x += player.speed;
-      });
+      for (var _i = 0; _i < platforms.length; _i++) {
+        var _platform = platforms[_i];
+        _platform.velocity.x = player.speed;
+
+        if (_platform.block && Object(_utils_js__WEBPACK_IMPORTED_MODULE_4__["hitSideOfPlatform"])({
+          object: player,
+          platform: _platform
+        })) {
+          platforms.forEach(function (platform) {
+            platform.velocity.x = 0;
+          });
+          hitSide = true;
+          break;
+        }
+      }
+
+      if (!hitSide) {
+        scrollOffset -= player.speed;
+        genericObject.forEach(function (genericObject) {
+          genericObject.velocity.x = player.speed * 0.66;
+        });
+        enemys.forEach(function (enemy) {
+          enemy.position.x += player.speed;
+        });
+        particles.forEach(function (particle) {
+          particle.position.x += player.speed;
+        });
+      }
     }
   } // platform collision detection
 

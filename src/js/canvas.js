@@ -606,6 +606,11 @@ function animate() {
       player.velocity.x = 0
     }
 
+
+
+
+    
+
     // particles bounce
     particles.forEach((particle, index) => {
       if (
